@@ -1,0 +1,17 @@
+@mixin hr($color) {
+  border-top: 1px solid $color;
+  border-bottom: none;
+  margin: $spacing-half 0;
+}
+
+hr.primary {
+  @include hr($color-primary);
+}
+
+hr.secondary {
+  @include hr($color-secondary);
+}
+
+hr.light {
+  @include hr(#cacaca);
+}
