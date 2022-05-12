@@ -3,6 +3,7 @@ import { Container, Header } from '../components';
 import hoverEffect from 'hover-effect';
 import { useEffect, useRef } from 'react';
 import Image from 'next/image';
+
 const Home = () => {
   const img = useRef(null);
 
@@ -14,7 +15,7 @@ const Home = () => {
       image2: './images/slider-img2.jpg',
       displacementImage: './images/displacement/1.jpg',
     });
-  }, [,]);
+  }, []);
   return (
     <Container>
       <Header />
