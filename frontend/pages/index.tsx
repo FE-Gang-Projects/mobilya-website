@@ -1,30 +1,32 @@
 import { Container, Header } from '../components';
 // @ts-ignore
-import hoverEffect from 'hover-effect';
-import { useEffect, useRef } from 'react';
+import Slider from 'react-slick';
 import Image from 'next/image';
 
 const Home = () => {
-  const img = useRef(null);
-
-  // useEffect(() => {
-  //   const x = new hoverEffect({
-  //     parent: img.current,
-  //     intensity: 0.3,
-  //     image1: './images/slider-img1.jpg',
-  //     image2: './images/slider-img2.jpg',
-  //     displacementImage: './images/displacement/1.jpg',
-  //   });
-  // }, []);
+  //slider kütüphanesi doc'u => https://react-slick.neostack.com/docs/example/simple-slider
+  const sliderSettings = {
+    autoplay: true,
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    pauseOnHover: false,
+    className: 'landing-slider',
+  };
 
   return (
     <Container>
       <Header />
-      <div className="temp-img-container">
-        <Image src="/images/slider-img2.jpg" width={1920} height={773} alt="xx" />
-      </div>
-      <div className="spacer"></div>
-      {/* <div ref={img} className="landing-page-slider"></div> */}
+      <Slider {...sliderSettings}>
+        <div>
+          <Image src="/images/slider-img1.jpg" width={1920} height={850} alt="xx" />
+        </div>
+        <div>
+          <Image src="/images/slider-img2.jpg" width={1920} height={850} alt="xx" />
+        </div>
+      </Slider>
     </Container>
   );
 };

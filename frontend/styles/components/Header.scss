@@ -1,23 +1,19 @@
+@use '../utility' as *;
+
 .header {
-  display: flex;
+  @include flex(normal, normal, column);
   font-size: 18px;
-  flex-direction: column;
   &-top {
+    @include flex(space-between, center);
     width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     padding-bottom: 18px;
     border-bottom: 1px solid #c4c4c4;
     &-options {
-      display: flex;
-      justify-content: space-between;
+      @include flex(space-between);
       width: 580px;
     }
     &-utils {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      @include flex(space-between, center);
       width: 605px;
     }
   }
@@ -25,8 +21,7 @@
 
 .header-top {
   &-search-container {
-    display: flex;
-    align-items: center;
+    @include flex(normal, center);
     position: relative;
     .search-icon-container {
       position: absolute;
@@ -34,8 +29,7 @@
       top: 12px;
     }
     input[type='text'] {
-      width: 308px;
-      height: 45px;
+      @include size(308px, 45px);
       border: 2px solid #e7e1e1;
       border-top-left-radius: 13px;
       border-bottom-left-radius: 13px;
@@ -53,8 +47,7 @@
       }
     }
     button {
-      width: 73px;
-      height: 45px;
+      @include size(73px, 45px);
       border: none;
       background: #e6e1e1;
       border-radius: 0px 13px 13px 0px;
@@ -65,8 +58,7 @@
     }
   }
   &-favorites-container {
-    display: flex;
-    align-items: center;
+    @include flex(normal, center);
     cursor: pointer;
     span {
       margin-left: 11px;
@@ -75,10 +67,8 @@
 }
 
 .header-bottom {
+  @include flex(space-between, center);
   padding: 18px 0;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   a {
     line-height: 36px;
     border-right: 1px #c4c4c4 solid;

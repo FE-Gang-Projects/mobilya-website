@@ -6,6 +6,18 @@
   margin: $spacing-half 0;
 }
 
+@mixin flex($justify: normal, $align: normal, $direction: row) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+  flex-direction: $direction;
+}
+
+@mixin size($width, $height) {
+  width: $width;
+  height: $height;
+}
+
 hr.primary {
   @include hr($color-primary);
 }

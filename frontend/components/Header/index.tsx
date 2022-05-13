@@ -38,7 +38,7 @@ const Header = () => {
             <button>ARA</button>
           </div>
           <div className="header-top-favorites-container">
-            <Image src="/icons/favorites.svg" width={21} height={20} alt="Arama İkonu" />
+            <Image src="/icons/favorites.svg" width={21} height={20} alt="Favori İkonu" />
             <span>Favorilerim</span>
           </div>
         </div>

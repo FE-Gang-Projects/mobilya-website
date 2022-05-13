@@ -1,0 +1,23 @@
+.landing-slider {
+  img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+  }
+  .slick-next {
+    right: 40px;
+    z-index: 1;
+    &::before {
+      font-size: 60px;
+      opacity: 0.9;
+    }
+  }
+  .slick-prev {
+    left: 0;
+    z-index: 1;
+    &::before {
+      font-size: 60px;
+      opacity: 0.85;
+    }
+  }
+}
