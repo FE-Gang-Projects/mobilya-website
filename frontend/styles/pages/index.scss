@@ -1,0 +1,74 @@
+.catalog-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-template-rows: 400px 400px 400px;
+  gap: 33px;
+  img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover;
+  }
+  span {
+    width: 100% !important;
+    height: 100% !important;
+    border-radius: 30px;
+  }
+}
+.catalog-card-title {
+  top: 20px;
+  left: 20px;
+  position: absolute;
+  z-index: 1;
+  font-weight: 700;
+  font-size: 32px;
+  color: #ffffff;
+}
+.catalog-card-btn {
+  width: 170px;
+  height: 47px;
+  bottom: 20px;
+  right: 20px;
+  position: absolute;
+  z-index: 1;
+  border: none;
+  font-weight: 700;
+  font-size: 14px;
+  border-radius: 32px;
+  cursor: pointer;
+  background: #ffffff;
+}
+.catalog-card1 {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  position: relative;
+}
+
+.catalog-card2 {
+  position: relative;
+  grid-column-start: 3;
+  grid-column-end: 4;
+}
+
+.catalog-card3 {
+  position: relative;
+  grid-row-start: 2;
+  grid-row-end: 4;
+}
+
+.catalog-card4 {
+  position: relative;
+  grid-row-start: 2;
+  grid-row-end: 3;
+  grid-column-start: 2;
+  grid-column-end: 4;
+}
+.catalog-card5 {
+  position: relative;
+  grid-column-start: 2;
+  grid-column-end: 3;
+}
+.catalog-card6 {
+  position: relative;
+  grid-column-start: 3;
+  grid-column-end: 4;
+}

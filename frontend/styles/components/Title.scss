@@ -1,0 +1,17 @@
+@use '../utility' as *;
+
+.title-container {
+  @include flex(normal, center);
+  margin: 70px 0;
+}
+.main-page-title {
+  font-weight: 600;
+  font-size: 32px;
+  max-width: max-content;
+  margin: 0 25px;
+}
+.title-hr {
+  background: #c4c4c4;
+  height: 1px;
+  flex: 1;
+}
