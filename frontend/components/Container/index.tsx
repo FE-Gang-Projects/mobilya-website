@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import Head from 'next/head';
-
+import { Footer, Header } from '../';
 interface ContainerProps {
   title: string;
   keywords: string;
@@ -17,7 +17,11 @@ const Container = ({ title, keywords, description, children }: ContainerProps) =
         <meta name="description" content={description} />
         <meta name="keywords" content={keywords} />
       </Head>
-      <div className="container">{children}</div>
+      <div className="container">
+        <Header />
+        {children}
+      </div>
+      <Footer />
     </>
   );
 };

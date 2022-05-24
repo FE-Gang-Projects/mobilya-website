@@ -1,0 +1,43 @@
+{
+  "kind": "collectionType",
+  "collectionName": "uruns",
+  "info": {
+    "singularName": "urun",
+    "pluralName": "uruns",
+    "displayName": "Urun",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "ad": {
+      "type": "string",
+      "required": true
+    },
+    "medya": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "kampanya": {
+      "type": "boolean",
+      "default": false
+    },
+    "aciklama": {
+      "type": "richtext"
+    },
+    "kategori": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::kategori.kategori"
+    }
+  }
+}

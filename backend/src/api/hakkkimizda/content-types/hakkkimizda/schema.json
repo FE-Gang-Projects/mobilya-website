@@ -1,0 +1,30 @@
+{
+  "kind": "singleType",
+  "collectionName": "hakkkimizdas",
+  "info": {
+    "singularName": "hakkkimizda",
+    "pluralName": "hakkkimizdas",
+    "displayName": "Hakkkımızda",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "yazi": {
+      "type": "text"
+    },
+    "medya": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    }
+  }
+}

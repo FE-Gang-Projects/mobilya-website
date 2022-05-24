@@ -18,7 +18,6 @@ const Home = () => {
 
   return (
     <Container>
-      <Header />
       <Slider {...sliderSettings}>
         <div>
           <Image src="/images/slider-img1.jpg" width={1920} height={850} alt="xx" />

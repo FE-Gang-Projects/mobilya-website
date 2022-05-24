@@ -10,7 +10,7 @@
     border-bottom: 1px solid #c4c4c4;
     &-options {
       @include flex(space-between);
-      width: 580px;
+      width: 450px;
     }
     &-utils {
       @include flex(space-between, center);
@@ -74,8 +74,8 @@
     border-right: 1px #c4c4c4 solid;
     flex: 1;
     text-align: center;
-    &:first-child {
-      border-left: 1px #c4c4c4 solid;
+    &:last-child {
+      border-right: none;
     }
   }
 }
