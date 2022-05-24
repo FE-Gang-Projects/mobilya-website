@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "markas",
+  "info": {
+    "singularName": "marka",
+    "pluralName": "markas",
+    "displayName": "Marka"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "ad": {
+      "type": "string"
+    }
+  }
+}

@@ -38,6 +38,11 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::kategori.kategori"
+    },
+    "marka": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::marka.marka"
     }
   }
 }
