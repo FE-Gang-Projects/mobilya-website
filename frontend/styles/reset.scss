@@ -16,8 +16,10 @@ a {
   margin: 0;
   font-family: 'Poppins', sans-serif !important;
 }
-
-// Aşağısı reset css
+#map {
+  width: 400px;
+  height: 100px;
+}
 
 html,
 body,

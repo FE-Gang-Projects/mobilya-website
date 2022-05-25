@@ -1,5 +1,9 @@
-import React from 'react';
-
+import React, { useEffect } from 'react';
+declare global {
+  interface Window {
+    initMap: () => void;
+  }
+}
 export default function Footer() {
   const categories = [
     'Yatak Odası',
@@ -15,6 +19,22 @@ export default function Footer() {
     'Oturma Grubu',
     'Düğün Paketleri2',
   ];
+
+  useEffect(() => {
+    function initMap(): void {
+      const uluru = { lat: -25.344, lng: 131.031 };
+      const map = new google.maps.Map(document.getElementById('map') as HTMLElement, {
+        zoom: 4,
+        center: uluru,
+      });
+      new google.maps.Marker({
+        position: uluru,
+        map: map,
+      });
+    }
+    initMap();
+  }, []);
+
   return (
     <div className="footer">
       <div className="footer__cols">
@@ -43,6 +63,7 @@ export default function Footer() {
         </div>
         <div className="footer__cols__map">
           <h2 className="footer-title">HARİTA</h2>
+          <div id="map"></div>
         </div>
       </div>
       <div className="footer__copyright">
