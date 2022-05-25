@@ -9,12 +9,14 @@
     padding-bottom: 18px;
     border-bottom: 1px solid #c4c4c4;
     &-options {
-      @include flex(space-between);
-      width: 450px;
+      @include flex(space-around);
+      // width: 450px;
+      flex: 1;
     }
     &-utils {
       @include flex(space-between, center);
-      width: 605px;
+      // width: 605px;
+      flex: 1;
     }
   }
 }

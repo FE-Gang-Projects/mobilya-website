@@ -1,3 +1,4 @@
+// Landing page'deki büyük slider custom arrow ve dot
 .landing-slider {
   img {
     width: 100% !important;
@@ -19,5 +20,8 @@
       font-size: 60px;
       opacity: 0.85;
     }
+  }
+  .slick-dots li button::before {
+    font-size: 16px;
   }
 }

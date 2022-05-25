@@ -1,4 +1,4 @@
-import { Container, Header, Title } from '../components';
+import { Container, Title } from '../components';
 import Image from 'next/image';
 // @ts-ignore
 import Slider from 'react-slick';
@@ -26,6 +26,7 @@ const Home = () => {
           <Image src="/images/slider-img2.jpg" width={1920} height={850} alt="xx" />
         </div>
       </Slider>
+      <Title text="Kampanyalı Ürünler" />
       <Title text="Ürün Kataloğumuz" />
       {/* Aşağı kısmın hem css hemde jsx kısmı düzenlenmeli */}
       {/* Cardlar responsive olacak, hover effect eklenebilir */}
