@@ -4,23 +4,31 @@
   margin-top: 20px;
   width: 100%;
   &__cols {
-    padding: 25px 250px;
-    background-color: #f5f7fa;
     display: flex;
     justify-content: space-between;
+    max-width: 1366px;
+    margin: 0 auto;
+    padding: 10px 20px 20px 20px;
+    &__container {
+      width: 100%;
+      background-color: #f5f7fa;
+    }
     & > div {
       display: flex;
       flex-direction: column;
-      gap: 20px;
+      gap: 10px;
     }
     &__cats {
-      width: 500px;
+      width: 37%;
     }
     &__contact {
-      width: 350px;
+      width: 26%;
+      p {
+        line-height: 1.7;
+      }
     }
     &__map {
-      width: 500px;
+      width: 37%;
     }
   }
   &__category-container {
@@ -47,5 +55,16 @@
     font-size: 24px;
     line-height: 36px;
     color: #000000;
+  }
+  &-social {
+    display: flex;
+    gap: 10px;
+    img {
+      transition: all 0.2s ease-in-out;
+      cursor: pointer;
+    }
+    img:hover {
+      opacity: 0.8;
+    }
   }
 }

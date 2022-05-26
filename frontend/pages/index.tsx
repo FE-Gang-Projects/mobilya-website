@@ -1,7 +1,6 @@
-import { Container, Title } from '../components';
-import Image from 'next/image';
 import Link from 'next/link';
-// @ts-ignore
+import { Container, Title, ProductSlider } from '../components';
+import Image from 'next/image';
 import Slider from 'react-slick';
 import { useState } from 'react';
 
@@ -26,6 +25,54 @@ const Home = () => {
     className: 'landing-slider',
   };
 
+  const products = [
+    {
+      id: 1,
+      ad: 'Royal Bebek Odası',
+      medya: ['https://www.sezerlermobilya.com/Uploads/UrunResimleri/thumb/royal-bebek-odasi-26ef.jpg'],
+      kampanya: true,
+      kategori: 'string',
+      marka: 'string',
+      aciklama: 'string',
+    },
+    {
+      id: 1,
+      ad: 'Royal Bebek Odası Deneme Uzun İsim',
+      medya: ['https://www.sezerlermobilya.com/Uploads/UrunResimleri/thumb/royal-bebek-odasi-26ef.jpg'],
+      kampanya: true,
+      kategori: 'string',
+      marka: 'string',
+      aciklama: 'string',
+    },
+    {
+      id: 1,
+      ad: 'Royal Bebek Odası',
+      medya: ['https://www.sezerlermobilya.com/Uploads/UrunResimleri/thumb/royal-bebek-odasi-26ef.jpg'],
+      kampanya: true,
+      kategori: 'string',
+      marka: 'string',
+      aciklama: 'string',
+    },
+    {
+      id: 1,
+      ad: 'Royal Bebek Odası',
+      medya: ['https://www.sezerlermobilya.com/Uploads/UrunResimleri/thumb/royal-bebek-odasi-26ef.jpg'],
+      kampanya: true,
+      kategori: 'string',
+      marka: 'string',
+      aciklama: 'string',
+    },
+    {
+      id: 1,
+      ad: 'Royal Bebek Odası',
+      medya: ['https://www.sezerlermobilya.com/Uploads/UrunResimleri/thumb/royal-bebek-odasi-26ef.jpg'],
+      kampanya: true,
+      kategori: 'string',
+      marka: 'string',
+      aciklama: 'string',
+    },
+  ];
+
   return (
     <Container>
       <Slider {...sliderSettings}>
@@ -37,7 +84,11 @@ const Home = () => {
         </div>
       </Slider>
       <Title text="Kampanyalı Ürünler" />
+      <ProductSlider products={products} />
       <Title text="Ürün Kataloğumuz" />
+      {/* Aşağı kısmın hem css hemde jsx kısmı düzenlenmeli */}
+      {/* Cardlar responsive olacak, hover effect eklenebilir */}
+      {/* Div yerine link'e sarılı olmalılar */}
       <div className="catalog-container">
         {catalogImages.map((category, i) => (
           <Link key={i} href={category.link}>
