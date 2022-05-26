@@ -1,9 +1,9 @@
 .catalog-container {
   display: grid;
   // grid-template-columns: auto auto auto;
-  grid-template-rows: 400px 400px 400px;
+  grid-template-rows: 350px 350px 350px;
   grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-  gap: 33px;
+  gap: 25px;
   img {
     width: 100% !important;
     height: 100% !important;
@@ -13,6 +13,9 @@
     width: 100% !important;
     height: 100% !important;
     border-radius: 30px;
+  }
+  a {
+    cursor: pointer;
   }
 }
 .catalog-card-title {
@@ -38,38 +41,49 @@
   cursor: pointer;
   background: #ffffff;
 }
+
+.catalog-card {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  img {
+    transition: 0.3s all ease-in-out;
+    filter: brightness(70%);
+  }
+  &:hover {
+    img {
+      filter: brightness(40%);
+      transform: scale(1.2);
+    }
+  }
+}
+
 .catalog-card1 {
   grid-column-start: 1;
   grid-column-end: 3;
-  position: relative;
 }
 
 .catalog-card2 {
-  position: relative;
   grid-column-start: 3;
   grid-column-end: 4;
 }
 
 .catalog-card3 {
-  position: relative;
   grid-row-start: 2;
   grid-row-end: 4;
 }
 
 .catalog-card4 {
-  position: relative;
   grid-row-start: 2;
   grid-row-end: 3;
   grid-column-start: 2;
   grid-column-end: 4;
 }
 .catalog-card5 {
-  position: relative;
   grid-column-start: 2;
   grid-column-end: 3;
 }
 .catalog-card6 {
-  position: relative;
   grid-column-start: 3;
   grid-column-end: 4;
 }

@@ -1,9 +1,19 @@
 import { Container, Title } from '../components';
 import Image from 'next/image';
+import Link from 'next/link';
 // @ts-ignore
 import Slider from 'react-slick';
+import { useState } from 'react';
 
 const Home = () => {
+  const [catalogImages, setCatalogImages] = useState([
+    { img: '/images/seat.png', link: '/x', type: 'Koltuklar' },
+    { img: '/images/kitchen.png', link: '/x', type: 'Mutfak takımı' },
+    { img: '/images/bedroom.png', link: '/x', type: 'Yatak odası' },
+    { img: '/images/seat.png', link: '/x', type: 'Koltuklar' },
+    { img: '/images/kitchen.png', link: '/x', type: 'Mutfak takımı' },
+    { img: '/images/kitchen.png', link: '/x', type: 'Mutfak takımı' },
+  ]);
   //slider kütüphanesi doc'u => https://react-slick.neostack.com/docs/example/simple-slider
   const sliderSettings = {
     autoplay: true,
@@ -28,40 +38,16 @@ const Home = () => {
       </Slider>
       <Title text="Kampanyalı Ürünler" />
       <Title text="Ürün Kataloğumuz" />
-      {/* Aşağı kısmın hem css hemde jsx kısmı düzenlenmeli */}
-      {/* Cardlar responsive olacak, hover effect eklenebilir */}
-      {/* Div yerine link'e sarılı olmalılar */}
       <div className="catalog-container">
-        <div className="catalog-card1">
-          <div className="catalog-card-title">Koltuklar</div>
-          <button className="catalog-card-btn">Tümünü görüntüle</button>
-          <Image src="/images/seat.png" width={1100} height={400} alt="koltuk" />
-        </div>
-        <div className="catalog-card2">
-          <div className="catalog-card-title">Mutfak Takımı</div>
-          <button className="catalog-card-btn">Tümünü görüntüle</button>
-          <Image src="/images/kitchen.png" width={550} height={400} alt="mutfak" />
-        </div>
-        <div className="catalog-card3">
-          <div className="catalog-card-title">Yatak Odası</div>
-          <button className="catalog-card-btn">Tümünü görüntüle</button>
-          <Image src="/images/bedroom.png" width={550} height={846} alt="yatak odası" />
-        </div>
-        <div className="catalog-card4">
-          <div className="catalog-card-title">Koltuklar</div>
-          <button className="catalog-card-btn">Tümünü görüntüle</button>
-          <Image src="/images/seat.png" width={1100} height={400} alt="koltuk" />
-        </div>
-        <div className="catalog-card5">
-          <div className="catalog-card-title">Mutfak Takımı</div>
-          <button className="catalog-card-btn">Tümünü görüntüle</button>
-          <Image src="/images/kitchen.png" width={550} height={400} alt="mutfak" />
-        </div>
-        <div className="catalog-card6">
-          <div className="catalog-card-title">Mutfak Takımı</div>
-          <button className="catalog-card-btn">Tümünü görüntüle</button>
-          <Image src="/images/kitchen.png" width={550} height={400} alt="mutfak" />
-        </div>
+        {catalogImages.map((category, i) => (
+          <Link key={i} href={category.link}>
+            <div className={`catalog-card catalog-card${i + 1}`}>
+              <div className="catalog-card-title">{category.type}</div>
+              <button className="catalog-card-btn">Tümünü görüntüle</button>
+              <Image src={category.img} width={1100} height={400} alt="koltuk" />
+            </div>
+          </Link>
+        ))}
       </div>
     </Container>
   );
