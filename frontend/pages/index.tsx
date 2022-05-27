@@ -84,11 +84,10 @@ const Home = () => {
         </div>
       </Slider>
       <Title text="Kampanyalı Ürünler" />
-      <ProductSlider products={products} />
+      <ProductSlider time={700} products={products} />
+      <ProductSlider time={1400} products={products} />
+      <ProductSlider time={2100} products={products} />
       <Title text="Ürün Kataloğumuz" />
-      {/* Aşağı kısmın hem css hemde jsx kısmı düzenlenmeli */}
-      {/* Cardlar responsive olacak, hover effect eklenebilir */}
-      {/* Div yerine link'e sarılı olmalılar */}
       <div className="catalog-container">
         {catalogImages.map((category, i) => (
           <Link key={i} href={category.link}>

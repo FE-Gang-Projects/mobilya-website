@@ -4,7 +4,7 @@ import Link from 'next/link';
 const Header = () => {
   const headerTopLinks = [
     { name: 'Tüm Ürünler', location: '/' },
-    { name: 'Hakkımızda', location: '/' },
+    { name: 'Hakkımızda', location: '/hakkimizda' },
     { name: 'İletişim', location: '/' },
   ];
   const headerBottomLinks = [

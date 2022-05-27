@@ -3,15 +3,16 @@ import Slider from 'react-slick';
 import { ProductCard } from '../';
 import { Product } from '../../types';
 
-export default function ProductSlider({ products }: { products: Product[] }) {
+export default function ProductSlider({ products, time }: { products: Product[]; time: number }) {
   const sliderSettings = {
-    autoplay: false,
+    autoplay: true,
     infinite: true,
-    slidesToShow: 4,
+    slidesToShow: 3,
     slidesToScroll: 1,
     pauseOnHover: true,
+    speed: time,
     dots: true,
-    // className: 'landing-slider',
+    className: 'products-slider',
     responsive: [
       {
         breakpoint: 600,

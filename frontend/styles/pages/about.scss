@@ -1,0 +1,22 @@
+.about-container {
+  padding: 100px 0;
+  display: flex;
+}
+.about-text-container {
+  flex: 1;
+  h3 {
+    font-weight: 700;
+    font-size: 34px;
+    color: #000000;
+  }
+  p {
+    margin-top: 30px;
+    font-size: 26px;
+    color: #000000;
+    line-height: 1.5;
+  }
+}
+.about-img-container {
+  flex: 1;
+  margin-left: 30px;
+}
