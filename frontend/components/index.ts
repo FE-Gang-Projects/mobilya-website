@@ -4,4 +4,15 @@ import Title from './Title';
 import Footer from './Footer';
 import ProductCard from './ProductCard';
 import ProductSlider from './ProductSlider';
-export { Container, Header, Title, Footer, ProductCard, ProductSlider };
+import ProductCardBig from './Products/Card';
+import CategorySelector from './Products/CategorySelector';
+export {
+  Container,
+  Header,
+  Title,
+  Footer,
+  ProductCard,
+  ProductSlider,
+  ProductCardBig,
+  CategorySelector,
+};
