@@ -8,12 +8,4 @@ const instance = axios.create({
   },
 });
 
-// instance.interceptors.response.use(
-//   (response) =>
-//     response.data.data.map((item: any) => {
-//       return { ...item.attributes, id: item.id };
-//     }),
-//   (error) => error
-// );
-
 export default instance;

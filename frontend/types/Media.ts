@@ -1,10 +1,20 @@
-export default interface Media {
+type mediaKey = 'thumbnail' | 'small' | 'medium' | 'large';
+
+export interface Media {
   name: string;
   formats: {
-    [key: string]: {
+    [key in mediaKey]: {
       url: string;
       width: number;
       height: number;
     };
   };
 }
+
+export type MediaFlat = {
+  [key in mediaKey]: {
+    url: string;
+    width: number;
+    height: number;
+  };
+};

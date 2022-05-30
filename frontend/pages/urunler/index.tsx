@@ -9,9 +9,9 @@ import {
 import Image from 'next/image';
 import Slider from 'react-slick';
 import { useState, useMemo, useEffect } from 'react';
-import { Product, Category, Strapi, StrapiArray } from '../../types';
+import { CategoryFlat, ProductFlat } from '../../types';
 import axios from '../../axios';
-
+import { getProducts, getCategories } from '../../axios/getters';
 // const ProductGrid = ({ category }: { category: { id: number; name: string; products: Product[] } }) => {
 //   useEffect(() => {
 //     (async () => {
@@ -37,7 +37,21 @@ import axios from '../../axios';
 //   }
 // };
 
-const Products = () => {
+export async function getStaticProps() {
+  const products = await getProducts();
+  const categories = await getCategories(products);
+  return {
+    props: {
+      products: products,
+      categories: categories,
+    },
+  };
+}
+
+const Products = ({ products, categories }: { products: ProductFlat[]; categories: CategoryFlat[] }) => {
+  console.log(categories);
+  // useEffect(() => {}
+  // console.log(products.data[0].attributes);
   // const cats = categories.map((cat) => ({
   //   ...cat,
   //   products: products.filter((product) => product.kategori === cat.name).slice(0, 9),

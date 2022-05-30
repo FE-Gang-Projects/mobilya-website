@@ -1,7 +1,16 @@
-import { Strapi, Media } from './';
-export default interface Category {
+import { Strapi, StrapiArray, StrapiMedia, Media, MediaFlat, ProductFlat } from './';
+export interface Category {
   navigasyondaGoster: boolean;
   name: string;
-  medya: Strapi<Media>;
+  medya: StrapiMedia<Media>;
   altKategoriler: Strapi<Category>[];
+}
+
+export interface CategoryFlat {
+  id: number;
+  products: ProductFlat[];
+  navigasyondaGoster: boolean;
+  name: string;
+  medya: MediaFlat[];
+  altKategoriler?: number[];
 }
