@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
-import { Product } from '../../types';
+import { ProductFlat } from '../../types';
 import Slider from 'react-slick';
 import Link from 'next/link';
 
-export default function Card({ product }: { product: Product }) {
+const BASE_URL = process.env.NEXT_PUBLIC_API_BASE_IMAGE_URL;
+
+export default function Card({ product }: { product: ProductFlat }) {
   const [isFavorite, setIsFavorite] = useState(false);
 
   const sliderSettings = {
@@ -38,7 +40,7 @@ export default function Card({ product }: { product: Product }) {
         </button>
         <Slider {...sliderSettings}>
           {product.medya.map((image, index) => (
-            <img key={index} src={image} alt={`${product.ad} ${index} resim`} />
+            <img key={index} src={BASE_URL + image.medium.url} alt={`${product.ad} ${index} resim`} />
           ))}
         </Slider>
       </div>
