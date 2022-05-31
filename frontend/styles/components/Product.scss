@@ -95,3 +95,24 @@
   padding: 10px 20px 30px 20px;
   border-radius: 20px;
 }
+
+.search-result__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 30px;
+  align-items: center;
+  min-height: 500px;
+  h4 {
+    font-size: 24px;
+    span {
+      font-weight: 700;
+    }
+  }
+  button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+}

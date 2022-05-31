@@ -19,7 +19,7 @@ export default function Card({ product }: { product: ProductFlat }) {
     className: 'all-product-card__image-slider',
   };
   return (
-    <Link href={'urunler/' + product.slug}>
+    <Link href={'/urunler/' + product.slug}>
       <div className="all-product-card__container">
         <div className="all-product-card__top">
           {product.kampanya && <div className="all-product-card__campaign">Kampanya</div>}

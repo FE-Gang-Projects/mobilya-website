@@ -21,12 +21,15 @@
 
 .header-top {
   &-search-container {
+    $input-active-color: #181818;
     @include flex(normal, center);
     position: relative;
     .search-icon-container {
       position: absolute;
       left: 16px;
       top: 12px;
+      pointer-events: none;
+      transition: all 0.2s ease-in-out;
     }
     input[type='text'] {
       @include size(308px, 45px);
@@ -38,12 +41,25 @@
       color: #2b2a28;
       padding-left: 41px;
       font-weight: 500;
+      transition: all 0.2s ease-in-out;
       &::placeholder {
         font-weight: 500;
         color: #2b2a28;
+        transition: all 0.1s ease-in-out;
       }
       &:focus {
         outline: none;
+        padding-left: 14px;
+        & + .search-icon-container {
+          opacity: 0;
+          transform: translateX(-20px);
+        }
+        &::placeholder {
+          opacity: 0;
+        }
+      }
+      &.active {
+        border-color: $input-active-color;
       }
     }
     button {
@@ -54,7 +70,12 @@
       font-weight: 500;
       font-size: 16px;
       color: #2b2a28;
-      cursor: pointer;
+      transition: all 0.2s ease-in-out;
+      &.active {
+        cursor: pointer;
+        background: $input-active-color;
+        color: #fff;
+      }
     }
   }
   &-favorites-container {

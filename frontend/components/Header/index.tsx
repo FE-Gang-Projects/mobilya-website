@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import SearchBar from './SearchBar';
 
 const Header = () => {
   const headerTopLinks = [
@@ -30,13 +31,7 @@ const Header = () => {
           ))}
         </div>
         <div className="header-top-utils">
-          <div className="header-top-search-container">
-            <div className="search-icon-container">
-              <Image src="/icons/search.svg" width={21} height={20} alt="Arama İkonu" />
-            </div>
-            <input type="text" placeholder="Site içi ürün arama" />
-            <button>ARA</button>
-          </div>
+          <SearchBar />
           <div className="header-top-favorites-container">
             <Image src="/icons/favorites.svg" width={21} height={20} alt="Favori İkonu" />
             <span>Favorilerim</span>
