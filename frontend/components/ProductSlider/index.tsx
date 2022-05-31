@@ -9,7 +9,7 @@ export default function ProductSlider({ products, time }: { products: Product[];
     infinite: true,
     slidesToShow: 3,
     slidesToScroll: 1,
-    pauseOnHover: true,
+    pauseOnHover: false,
     speed: time,
     dots: true,
     className: 'products-slider',

@@ -8,6 +8,7 @@ import ProductCardBig from './Products/Card';
 import CategorySelector from './Products/CategorySelector';
 import ProductGrid from './Products/ProductGrid';
 
+import SimpleLayout from './SimpleLayout';
 export {
   Container,
   Header,
@@ -16,6 +17,7 @@ export {
   ProductCard,
   ProductSlider,
   ProductCardBig,
+  SimpleLayout,
   CategorySelector,
   ProductGrid,
 };
