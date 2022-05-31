@@ -5,7 +5,7 @@ const Header = () => {
   const headerTopLinks = [
     { name: 'Tüm Ürünler', location: '/urunler' },
     { name: 'Hakkımızda', location: '/hakkimizda' },
-    { name: 'İletişim', location: '/' },
+    { name: 'İletişim', location: '/iletisim' },
   ];
   const headerBottomLinks = [
     { name: 'Düğün Paketi', location: '/' },
