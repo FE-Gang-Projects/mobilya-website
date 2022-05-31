@@ -1,3 +1,5 @@
+import { MediaFlat } from '../types';
+
 export function translateChars(word: string): string {
   return word
     .toLocaleLowerCase()
@@ -11,4 +13,12 @@ export function translateChars(word: string): string {
     .replace(/ö/g, 'o')
     .replace(/ç/g, 'c')
     .replace(/ /g, '-');
+}
+
+export function getBiggestUrl(media: MediaFlat): string {
+  if (media.large) return media.large.url;
+  if (media.medium) return media.medium.url;
+  if (media.small) return media.small.url;
+  if (media.thumbnail) return media.thumbnail.url;
+  return '';
 }

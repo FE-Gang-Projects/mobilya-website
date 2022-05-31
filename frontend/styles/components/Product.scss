@@ -103,6 +103,9 @@
   gap: 30px;
   align-items: center;
   min-height: 500px;
+  &.mhs {
+    min-height: 350px;
+  }
   h4 {
     font-size: 24px;
     span {

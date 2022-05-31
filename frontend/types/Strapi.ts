@@ -14,6 +14,13 @@ export interface StrapiMedia<T> {
     | null;
 }
 
+export interface StrapiMediaSingle<T> {
+  data: {
+    attributes: T;
+    id: number;
+  } | null;
+}
+
 export interface StrapiArray<T> {
   data: {
     attributes: T;

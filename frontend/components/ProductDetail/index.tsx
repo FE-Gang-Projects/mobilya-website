@@ -1,10 +1,10 @@
 import React from 'react';
 import { ProductFlat } from '../../types';
-import Container from '../Container';
+import ReactMarkdown from 'react-markdown';
 
 export default function ProductDetail({ product }: { product: ProductFlat }) {
   return (
-    <Container>
+    <>
       <div className="single-product__container">
         <div className="single-product__image">
           <img
@@ -57,6 +57,9 @@ export default function ProductDetail({ product }: { product: ProductFlat }) {
         </div> */}
         </div>
       </div>
-    </Container>
+      <div>
+        <ReactMarkdown>{product.aciklama}</ReactMarkdown>
+      </div>
+    </>
   );
 }

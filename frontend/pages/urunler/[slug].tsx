@@ -2,6 +2,7 @@ import React from 'react';
 import ProductDetail from '../../components/ProductDetail';
 import { getProducts } from '../../axios/getters';
 import { ProductFlat } from '../../types';
+import { Container } from '../../components';
 
 export async function getStaticPaths() {
   const products = await getProducts();
@@ -28,8 +29,8 @@ export async function getStaticProps({ params }: { params: { slug: string } }) {
 
 export default function SingleProduct({ product }: { product: ProductFlat }) {
   return (
-    <div className="page-container">
+    <Container>
       <ProductDetail product={product} />
-    </div>
+    </Container>
   );
 }

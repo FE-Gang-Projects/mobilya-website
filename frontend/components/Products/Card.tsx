@@ -40,7 +40,7 @@ export default function Card({ product }: { product: ProductFlat }) {
           </button>
           <Slider {...sliderSettings}>
             {product.medya.map((image, index) => (
-              <img key={index} src={BASE_URL + image.medium.url} alt={`${product.ad} ${index} resim`} />
+              <img key={index} src={BASE_URL + image.small.url} alt={`${product.ad} ${index} resim`} />
             ))}
           </Slider>
         </div>
