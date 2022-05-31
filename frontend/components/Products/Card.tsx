@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ProductFlat } from '../../types';
 import Slider from 'react-slick';
 import Link from 'next/link';
@@ -6,7 +6,37 @@ import Link from 'next/link';
 const BASE_URL = process.env.NEXT_PUBLIC_API_BASE_IMAGE_URL;
 
 export default function Card({ product }: { product: ProductFlat }) {
-  const [isFavorite, setIsFavorite] = useState(false);
+  const [isFavorite, setIsFavorite] = useState<boolean | null>(null);
+
+  const getFavorites = (): number[] => {
+    const favorites = localStorage.getItem('favorites');
+    if (favorites) return JSON.parse(favorites);
+    return [];
+  };
+
+  const storageListener = () => {
+    const favorites = getFavorites();
+    setIsFavorite(favorites.includes(product.id));
+  };
+
+  useEffect(() => {
+    const favorites = getFavorites();
+    setIsFavorite(favorites.includes(product.id));
+    window.addEventListener('storage', storageListener);
+    return () => {
+      window.removeEventListener('storage', storageListener);
+    };
+  }, []);
+
+  const ChangeFavorite = () => {
+    const favorites = getFavorites();
+    const newFavorites = isFavorite
+      ? favorites.filter((id) => id !== product.id)
+      : [...favorites, product.id];
+    setIsFavorite(!isFavorite);
+    localStorage.setItem('favorites', JSON.stringify(newFavorites));
+    window.dispatchEvent(new Event('storage'));
+  };
 
   const sliderSettings = {
     autoplay: true,
@@ -23,7 +53,12 @@ export default function Card({ product }: { product: ProductFlat }) {
       <div className="all-product-card__container">
         <div className="all-product-card__top">
           {product.kampanya && <div className="all-product-card__campaign">Kampanya</div>}
-          <button className="product-card__favorite" onClick={() => setIsFavorite(!isFavorite)}>
+          <button
+            className="product-card__favorite"
+            onClick={(e) => {
+              e.stopPropagation();
+              ChangeFavorite();
+            }}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className={`${isFavorite ? 'active' : ''}`}

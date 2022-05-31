@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import SearchBar from './SearchBar';
+import Favorites from './Favorites';
 
 const Header = () => {
   const headerTopLinks = [
@@ -32,10 +33,7 @@ const Header = () => {
         </div>
         <div className="header-top-utils">
           <SearchBar />
-          <div className="header-top-favorites-container">
-            <Image src="/icons/favorites.svg" width={21} height={20} alt="Favori İkonu" />
-            <span>Favorilerim</span>
-          </div>
+          <Favorites />
         </div>
       </div>
       <div className="header-bottom">

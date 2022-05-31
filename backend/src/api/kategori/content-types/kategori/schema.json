@@ -14,28 +14,29 @@
   "attributes": {
     "name": {
       "type": "string",
-      "required": true
-    },
-    "navigasyondaGoster": {
-      "type": "boolean",
-      "required": false,
-      "default": false
+      "required": true,
+      "unique": true
     },
     "medya": {
       "type": "media",
       "multiple": false,
       "required": false,
       "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
+        "images"
       ]
     },
     "altKategoriler": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::kategori.kategori"
+    },
+    "icon": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
     }
   }
 }

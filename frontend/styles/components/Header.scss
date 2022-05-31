@@ -32,7 +32,7 @@
       transition: all 0.2s ease-in-out;
     }
     input[type='text'] {
-      @include size(308px, 45px);
+      @include size(288px, 45px);
       border: 2px solid #e7e1e1;
       border-top-left-radius: 13px;
       border-bottom-left-radius: 13px;
@@ -80,9 +80,14 @@
   }
   &-favorites-container {
     @include flex(normal, center);
+    justify-content: space-between;
+    width: 100%;
+    padding-left: 14px;
     cursor: pointer;
     span {
-      margin-left: 11px;
+      font-weight: 500;
+      font-size: 15px;
+      color: #2b2a28;
     }
   }
 }

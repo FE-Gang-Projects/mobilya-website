@@ -14,17 +14,15 @@
   "attributes": {
     "ad": {
       "type": "string",
-      "required": true
+      "required": true,
+      "unique": true
     },
     "medya": {
       "type": "media",
       "multiple": true,
-      "required": false,
+      "required": true,
       "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
+        "images"
       ]
     },
     "kampanya": {
