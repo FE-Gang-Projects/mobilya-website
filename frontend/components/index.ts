@@ -6,6 +6,8 @@ import ProductCard from './ProductCard';
 import ProductSlider from './ProductSlider';
 import ProductCardBig from './Products/Card';
 import CategorySelector from './Products/CategorySelector';
+import ProductGrid from './Products/ProductGrid';
+
 export {
   Container,
   Header,
@@ -15,4 +17,5 @@ export {
   ProductSlider,
   ProductCardBig,
   CategorySelector,
+  ProductGrid,
 };

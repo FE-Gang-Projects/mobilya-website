@@ -13,4 +13,5 @@ export interface CategoryFlat {
   name: string;
   medya: MediaFlat[];
   altKategoriler?: number[];
+  slug: string;
 }

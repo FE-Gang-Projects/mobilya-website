@@ -8,12 +8,12 @@ import {
   StrapiArray,
   StrapiMedia,
 } from '../types';
+import { translateChars } from './helpers';
 
 const categoryFlatter = (
   categories: StrapiArray<Category>,
   products?: ProductFlat[]
 ): CategoryFlat[] => {
-  categories.data.forEach((item) => console.log(item));
   const temp = categories.data.map((category) => {
     return {
       navigasyondaGoster: category.attributes.navigasyondaGoster,
@@ -25,6 +25,7 @@ const categoryFlatter = (
         category.attributes.altKategoriler.length > 0 && {
           altKategoriler: category.attributes.altKategoriler.map((item) => item.data.id),
         }),
+      slug: translateChars(category.attributes.name),
     };
   });
   return temp;
@@ -40,6 +41,7 @@ const productFlatter = (products: StrapiArray<Product>): ProductFlat[] => {
       medya: mediaFlatter(item.attributes.medya),
       marka: item.attributes.marka.data.attributes.ad,
       kategori: item.attributes.kategori.data.attributes.name,
+      slug: translateChars(item.attributes.ad),
     };
   });
   return temp;

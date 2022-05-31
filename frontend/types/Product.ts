@@ -16,4 +16,5 @@ export interface ProductFlat {
   kampanya: boolean;
   marka: string;
   id: number;
+  slug: string;
 }

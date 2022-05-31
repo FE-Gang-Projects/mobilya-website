@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react';
 import { CategoryFlat } from '../../types';
 
@@ -9,17 +10,19 @@ export default function CategorySelector({ categories }: { categories: CategoryF
       <h2>Kategoriler</h2>
       <div className="category-selector__item__container">
         {categories.map((category) => (
-          <div className="category-selector__item" key={category.name}>
-            <div className="icon">
-              {category.medya && category.medya.length > 0 && (
-                <img src={BASE_URL + category.medya[0].medium.url} alt={category.name} />
-              )}
-              {!(category.medya && category.medya.length > 0) && (
-                <img src="/icons/seat.svg" alt={category.name} />
-              )}
+          <Link href={'/kategoriler/' + category.slug} key={category.name}>
+            <div className="category-selector__item">
+              <div className="icon">
+                {category.medya && category.medya.length > 0 && (
+                  <img src={BASE_URL + category.medya[0].medium.url} alt={category.name} />
+                )}
+                {!(category.medya && category.medya.length > 0) && (
+                  <img src="/icons/seat.svg" alt={category.name} />
+                )}
+              </div>
+              <h3>{category.name}</h3>
             </div>
-            <h3>{category.name}</h3>
-          </div>
+          </Link>
         ))}
       </div>
     </div>
