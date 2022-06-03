@@ -16,7 +16,7 @@ const ProductGrid = ({
   if (products.length > 0) {
     return (
       <>
-        <Title text={title} />
+        <Title text={title} margin="sm" />
         <div className="products-container">
           {products.slice(0, max).map((product) => (
             <Card key={product.id} product={product} />
