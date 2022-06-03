@@ -8,7 +8,7 @@ const BASE_URL = process.env.NEXT_PUBLIC_API_BASE_IMAGE_URL;
 export default function Card({ product }: { product: ProductFlat }) {
   const [isFavorite, setIsFavorite] = useState<boolean | null>(null);
 
-  const getFavorites = (): number[] => {
+  const getFavorites = (): ProductFlat[] => {
     const favorites = localStorage.getItem('favorites');
     if (favorites) return JSON.parse(favorites);
     return [];
@@ -16,12 +16,12 @@ export default function Card({ product }: { product: ProductFlat }) {
 
   const storageListener = () => {
     const favorites = getFavorites();
-    setIsFavorite(favorites.includes(product.id));
+    setIsFavorite(favorites.some((p) => p.id === product.id));
   };
 
   useEffect(() => {
     const favorites = getFavorites();
-    setIsFavorite(favorites.includes(product.id));
+    setIsFavorite(favorites.some((p) => p.id === product.id));
     window.addEventListener('storage', storageListener);
     return () => {
       window.removeEventListener('storage', storageListener);
@@ -31,8 +31,8 @@ export default function Card({ product }: { product: ProductFlat }) {
   const ChangeFavorite = () => {
     const favorites = getFavorites();
     const newFavorites = isFavorite
-      ? favorites.filter((id) => id !== product.id)
-      : [...favorites, product.id];
+      ? favorites.filter((fav) => fav.id !== product.id)
+      : [...favorites, product];
     setIsFavorite(!isFavorite);
     localStorage.setItem('favorites', JSON.stringify(newFavorites));
     window.dispatchEvent(new Event('storage'));

@@ -29,3 +29,21 @@ hr.secondary {
 hr.light {
   @include hr(#cacaca);
 }
+
+.scroll {
+  scrollbar-color: #231123 #431123;
+  scrollbar-width: thin;
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+  &::-webkit-scrollbar-track {
+    background: #231123;
+    border-radius: 5px;
+  }
+  &::-webkit-scrollbar-thumb {
+    border: 4px solid transparent;
+    border-radius: 5px;
+    background-clip: padding-box;
+    background: #231123;
+  }
+}
