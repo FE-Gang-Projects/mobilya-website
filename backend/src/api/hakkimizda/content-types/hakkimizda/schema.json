@@ -1,10 +1,10 @@
 {
   "kind": "singleType",
-  "collectionName": "hakkkimizdas",
+  "collectionName": "hakkimizdas",
   "info": {
-    "singularName": "hakkkimizda",
-    "pluralName": "hakkkimizdas",
-    "displayName": "Hakkkımızda",
+    "singularName": "hakkimizda",
+    "pluralName": "hakkimizdas",
+    "displayName": "Hakkımızda",
     "description": ""
   },
   "options": {
@@ -12,15 +12,18 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "yazi": {
+    "aciklama": {
       "type": "text"
     },
-    "medya": {
+    "dukkanResimleri": {
       "type": "media",
       "multiple": true,
       "required": false,
       "allowedTypes": [
-        "images"
+        "images",
+        "files",
+        "videos",
+        "audios"
       ]
     }
   }
