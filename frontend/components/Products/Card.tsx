@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { ProductFlat } from '../../types';
 import Slider from 'react-slick';
 import Link from 'next/link';
+import { toast } from 'react-toastify';
 
 const BASE_URL = process.env.NEXT_PUBLIC_API_BASE_IMAGE_URL;
 
@@ -58,6 +59,7 @@ export default function Card({ product }: { product: ProductFlat }) {
             onClick={(e) => {
               e.stopPropagation();
               ChangeFavorite();
+              toast.success('Ürün favorilerinize eklendi!');
             }}>
             <svg
               xmlns="http://www.w3.org/2000/svg"

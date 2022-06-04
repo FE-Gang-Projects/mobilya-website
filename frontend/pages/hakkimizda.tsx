@@ -1,39 +1,38 @@
-import { Container, SimpleLayout } from '../components';
 import Image from 'next/image';
+import { Container, SimpleLayout } from '../components';
 import { useState } from 'react';
+import { getAbout } from '../axios/getters';
+const BASE_URL = process.env.NEXT_PUBLIC_API_BASE_IMAGE_URL;
 
-const About = () => {
-  const [activeImg, setActiveImg] = useState('/images/dukkan-1.jfif');
+const About = ({ text, shopImgs }: { text: any; shopImgs: any }) => {
+  const imgs = shopImgs.map((img: any) => ({
+    small: BASE_URL + img.attributes.formats.small?.url,
+    medium: BASE_URL + img.attributes.formats.medium?.url,
+  }));
+  const [activeImg, setActiveImg] = useState(
+    imgs[0].medium.includes('undefined') ? imgs[0].small : imgs[0].medium
+  );
+
   return (
     <Container>
-      <SimpleLayout
-        title="Hakkımızda"
-        text=" Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
-            been the industrys standard dummy text ever since the 1500s, when an unknown printer took a
-            galley of type and scrambled it to make a type specimen book. It has survived not only five
-            centuries, but also the leap into electronic">
+      <SimpleLayout title="Hakkımızda" text={text}>
         <div className="about-img-gallery-container">
           <Image
             className="about-img-gallery-main-img"
             src={activeImg}
-            width={827}
-            height={530}
+            width={750}
+            height={500}
             alt="Dükkan Resmi"
           />
           <div className="about-img-gallery-options">
-            {[
-              '/images/dukkan-1.jfif',
-              '/images/dukkan-2.jpg',
-              '/images/dukkan-3.jpg',
-              '/images/dukkan-4.jpg',
-            ].map((imgSrc, i) => (
+            {imgs.map((src: any, i: number) => (
               <Image
                 key={i}
-                className={activeImg === imgSrc ? 'active' : ''}
-                onClick={() => setActiveImg(imgSrc)}
-                src={imgSrc}
-                width={140}
-                height={120}
+                className={activeImg === src.medium || activeImg === src.small ? 'active' : ''}
+                onClick={() => setActiveImg(!src.medium.includes('undefined') ? src.medium : src.small)}
+                src={!src.medium.includes('undefined') ? src.medium : src.small}
+                width={750}
+                height={500}
                 alt="Dükkan Resmi"
               />
             ))}
@@ -43,5 +42,15 @@ const About = () => {
     </Container>
   );
 };
+
+export async function getStaticProps() {
+  const res = await getAbout();
+  return {
+    props: {
+      text: res.data.attributes.aciklama,
+      shopImgs: res.data.attributes.dukkanResimleri.data,
+    },
+  };
+}
 
 export default About;

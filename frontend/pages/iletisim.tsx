@@ -1,6 +1,9 @@
 import { Container, SimpleLayout } from '../components';
 import Image from 'next/image';
 import { useState } from 'react';
+import axios from 'axios';
+import { toast } from 'react-toastify';
+const BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
 const Contact = () => {
   const [form, setForm] = useState({
@@ -12,7 +15,24 @@ const Contact = () => {
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    if (!form.name || !form.email || form.message) alert('Lütfen formdaki zorunlu alanları doldurunuz!');
+    if (!form.name || !form.email || !form.message) {
+      toast.error('Lütfen formdaki zorunlu alanları doldurunuz!');
+      return;
+    }
+    axios
+      .post(`${BASE_URL}/iletisims`, {
+        data: {
+          isim: form.name,
+          mesaj: form.message,
+          telefon: form.phone,
+          mail: form.email,
+        },
+      })
+      .then(() => toast.success('Mesaj başarıyla gönderildi!'))
+      .catch((err) => {
+        if (err.response.status === 400) toast.error('Lütfen geçerli bir mail adresi giriniz!');
+        else toast.error('Mesaj gönderilemedi!');
+      });
   };
 
   return (

@@ -11,3 +11,5 @@ export const getProducts = async (): Promise<ProductFlat[]> => {
   const res: StrapiArray<Product> = (await axios.get('/uruns')).data;
   return productFlatter(res);
 };
+
+export const getAbout = async (): Promise<any> => (await axios('/hakkimizda')).data;
