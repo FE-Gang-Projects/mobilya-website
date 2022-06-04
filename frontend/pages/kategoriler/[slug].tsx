@@ -1,9 +1,8 @@
 import React from 'react';
 import { getCategories, getProducts } from '../../axios/getters';
 import { CategoryFlat } from '../../types';
-import { Container, ProductGrid } from '../../components';
+import { Container, ProductGrid, Title } from '../../components';
 import { useRouter } from 'next/router';
-import { productFlatter } from '../../helpers/flatters';
 
 export async function getStaticPaths() {
   const products = await getProducts();
@@ -46,12 +45,15 @@ export default function CategoryPage({
         <ProductGrid products={category.products} title={category.name} />
       )}
       {category.products.length === 0 && category.altKategoriler?.length === 0 && (
-        <div className="search-result__container">
-          <h4>
-            &quot;<span>{category.name}</span>&quot; kategorisinde henüz ürün yok.
-          </h4>
-          <button onClick={() => router.push('/')}>Ana Sayfaya Dön</button>
-        </div>
+        <>
+          <Title text={category.name} margin="sm" />
+          <div className="search-result__container">
+            <h4>
+              &quot;<span>{category.name}</span>&quot; kategorisinde henüz ürün yok.
+            </h4>
+            <button onClick={() => router.push('/')}>Ana Sayfaya Dön</button>
+          </div>
+        </>
       )}
       {category.altKategoriler.length > 0 &&
         subCategories.map((cat) => (

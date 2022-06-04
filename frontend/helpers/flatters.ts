@@ -45,15 +45,6 @@ const productFlatter = (products: StrapiArray<Product>): ProductFlat[] => {
   return temp;
 };
 
-// const mediaFlatter = (media: StrapiMedia<Media>): MediaFlat[] => {
-//   console.log(media);
-//   if (!media.data) return [];
-//   const temp = media.data.map((item) => {
-//     return { ...item.attributes.formats };
-//   });
-//   return temp;
-// };
-
 const mediaFlatter = (media: StrapiMedia<Media> | StrapiMediaSingle<Media>): MediaFlat[] => {
   if (!media.data) return [];
   if (!Array.isArray(media.data)) {

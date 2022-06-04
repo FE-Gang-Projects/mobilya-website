@@ -12,14 +12,12 @@ export default function CategorySelector({ categories }: { categories: CategoryF
         {categories.map((category) => (
           <Link href={'/kategoriler/' + category.slug} key={category.name}>
             <div className="category-selector__item">
-              <div className="icon">
-                {category.icon && category.icon.length > 0 && (
-                  <img src={BASE_URL + category.icon[0].thumbnail.url} alt={category.name} />
-                )}
-                {!(category.icon && category.icon.length > 0) && (
-                  <img src="/icons/seat.svg" alt={category.name} />
-                )}
-              </div>
+              {category.icon && category.icon.length > 0 && category.icon[0]?.thumbnail?.url && (
+                <img src={BASE_URL + category.icon[0].thumbnail.url} alt={category.name} />
+              )}
+              {!(category.icon && category.icon.length > 0) && (
+                <img src="/icons/seat.svg" alt={category.name} />
+              )}
               <h3>{category.name}</h3>
             </div>
           </Link>
