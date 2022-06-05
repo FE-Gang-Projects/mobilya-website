@@ -36,7 +36,16 @@ export default function Favorites() {
 
   return (
     <div ref={divRef} className="header-top-favorites-container" onClick={() => setShow(!show)}>
-      <Image src="/icons/favorites.svg" width={21} height={20} alt="Favori İkonu" />
+      <div className="favori-icon-container">
+        <Image
+          className="favori-icon"
+          src="/icons/favorites.svg"
+          width={25}
+          height={24}
+          alt="Favori İkonu"
+        />
+      </div>
+
       <h4>
         Favorilerim <span>({favorites.length})</span>
       </h4>

@@ -2,6 +2,7 @@ import Image from 'next/image';
 import { Container, SimpleLayout } from '../components';
 import { useState } from 'react';
 import { getAbout } from '../axios/getters';
+
 const BASE_URL = process.env.NEXT_PUBLIC_API_BASE_IMAGE_URL;
 
 const About = ({ text, shopImgs }: { text: any; shopImgs: any }) => {
@@ -45,6 +46,7 @@ const About = ({ text, shopImgs }: { text: any; shopImgs: any }) => {
 
 export async function getStaticProps() {
   const res = await getAbout();
+  console.log(res);
   return {
     props: {
       text: res.data.attributes.aciklama,

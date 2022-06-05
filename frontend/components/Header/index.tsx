@@ -2,22 +2,9 @@ import Image from 'next/image';
 import Link from 'next/link';
 import SearchBar from './SearchBar';
 import Favorites from './Favorites';
-
+import Hamburger from './Hamburger';
+import { headerBottomLinks, headerTopLinks } from './options';
 const Header = () => {
-  const headerTopLinks = [
-    { name: 'Tüm Ürünler', location: '/urunler' },
-    { name: 'Hakkımızda', location: '/hakkimizda' },
-    { name: 'İletişim', location: '/iletisim' },
-  ];
-  const headerBottomLinks = [
-    { name: 'Koltuk Takımı', location: '/kategoriler/koltuk-takimi' },
-    { name: 'Yatak Odası', location: '/kategoriler/yatak-odasi' },
-    { name: 'Beyaz Eşya', location: '/kategoriler/beyaz-esya' },
-    { name: 'Televizyon', location: '/kategoriler/koltuk-takimi' },
-    { name: 'Genç Odası', location: '/kategoriler/genc-odasi' },
-    { name: 'Yemek Odası', location: '/kategoriler/yemek-odasi' },
-    { name: 'Mutfak Masası', location: '/kategoriler/mutfak-masasi' },
-  ];
   return (
     <header className="header">
       <div className="header-top">
@@ -34,6 +21,7 @@ const Header = () => {
         <div className="header-top-utils">
           <SearchBar />
           <Favorites />
+          <Hamburger />
         </div>
       </div>
       <div className="header-bottom">
