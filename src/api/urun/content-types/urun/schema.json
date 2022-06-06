@@ -37,6 +37,13 @@
       "relation": "oneToOne",
       "target": "api::kategori.kategori"
     },
+    "kisaAciklama": {
+      "type": "string",
+      "required": false
+    },
+    "ozellikler": {
+      "type": "json"
+    },
     "marka": {
       "type": "relation",
       "relation": "oneToOne",
