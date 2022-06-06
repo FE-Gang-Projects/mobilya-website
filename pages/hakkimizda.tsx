@@ -6,13 +6,8 @@ import { getAbout } from '../axios/getters';
 const BASE_URL = process.env.NEXT_PUBLIC_API_BASE_IMAGE_URL;
 
 const About = ({ text, shopImgs }: { text: any; shopImgs: any }) => {
-  const imgs = shopImgs.map((img: any) => ({
-    small: BASE_URL + img.attributes.formats.small?.url,
-    medium: BASE_URL + img.attributes.formats.medium?.url,
-  }));
-  const [activeImg, setActiveImg] = useState(
-    imgs[0].medium.includes('undefined') ? imgs[0].small : imgs[0].medium
-  );
+  const imgs = shopImgs.map((img: any) => img.attributes.url);
+  const [activeImg, setActiveImg] = useState(imgs[0]);
 
   return (
     <Container>
@@ -29,9 +24,9 @@ const About = ({ text, shopImgs }: { text: any; shopImgs: any }) => {
             {imgs.map((src: any, i: number) => (
               <Image
                 key={i}
-                className={activeImg === src.medium || activeImg === src.small ? 'active' : ''}
-                onClick={() => setActiveImg(!src.medium.includes('undefined') ? src.medium : src.small)}
-                src={!src.medium.includes('undefined') ? src.medium : src.small}
+                className={activeImg === src ? 'active' : ''}
+                onClick={() => setActiveImg(src)}
+                src={src}
                 width={750}
                 height={500}
                 alt="Dükkan Resmi"
