@@ -1,8 +1,8 @@
-import { Strapi, StrapiArray, StrapiMedia, Media, MediaFlat, Category, Brand } from './';
+import { Strapi, StrapiMedia, Category, Brand } from './';
 export interface Product {
   ad: string;
   aciklama: string;
-  medya: StrapiMedia<Media>;
+  medya: StrapiMedia;
   kategori: Strapi<Category>;
   kampanya: boolean;
   marka: Strapi<Brand>;
@@ -13,7 +13,7 @@ export interface Product {
 export interface ProductFlat {
   ad: string;
   aciklama: string;
-  medya: MediaFlat[];
+  medya: string[];
   kategori: string;
   kampanya: boolean;
   marka: string;

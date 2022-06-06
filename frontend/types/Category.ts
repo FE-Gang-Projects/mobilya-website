@@ -1,8 +1,8 @@
-import { Strapi, StrapiArray, StrapiMedia, Media, MediaFlat, ProductFlat, StrapiMediaSingle } from './';
+import { Strapi, StrapiArray, StrapiMedia, ProductFlat } from './';
 export interface Category {
   name: string;
-  medya: StrapiMediaSingle<Media>;
-  icon: StrapiMediaSingle<Media>;
+  medya: StrapiMedia;
+  icon: StrapiMedia;
   altKategoriler: { data: { id: number }[] };
 }
 
@@ -10,8 +10,8 @@ export interface CategoryFlat {
   id: number;
   products: ProductFlat[];
   name: string;
-  medya: MediaFlat[];
-  icon: MediaFlat[];
+  medya: string[];
+  icon: string[];
   altKategoriler: number[];
   slug: string;
 }

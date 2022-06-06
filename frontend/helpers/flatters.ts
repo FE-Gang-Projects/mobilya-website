@@ -1,14 +1,4 @@
-import {
-  Product,
-  ProductFlat,
-  Category,
-  CategoryFlat,
-  Media,
-  MediaFlat,
-  StrapiArray,
-  StrapiMedia,
-  StrapiMediaSingle,
-} from '../types';
+import { Product, ProductFlat, Category, CategoryFlat, StrapiArray, StrapiMedia } from '../types';
 import { translateChars } from './helpers';
 
 const categoryFlatter = (
@@ -47,13 +37,13 @@ const productFlatter = (products: StrapiArray<Product>): ProductFlat[] => {
   return temp;
 };
 
-const mediaFlatter = (media: StrapiMedia<Media> | StrapiMediaSingle<Media>): MediaFlat[] => {
+const mediaFlatter = (media: StrapiMedia): string[] => {
   if (!media.data) return [];
   if (!Array.isArray(media.data)) {
-    return [media.data.attributes.formats];
+    return [media.data.attributes.url];
   }
   const temp = media.data.map((item) => {
-    return { ...item.attributes.formats };
+    return item.attributes.url;
   });
   return temp;
 };

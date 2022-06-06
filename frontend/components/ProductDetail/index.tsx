@@ -38,10 +38,6 @@ export default function ProductDetail({ product }: { product: ProductFlat }) {
               <span>{product.marka}</span>
             </div>
           )}
-          <div className="single-product__info__detail">
-            <h4>Kampanya:</h4>
-            <span>Hemen Teslim Fiyatı</span>
-          </div>
           {attributes}
         </div>
       </div>

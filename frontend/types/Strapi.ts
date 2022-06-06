@@ -5,25 +5,26 @@ export interface Strapi<T> {
   };
 }
 
-export interface StrapiMedia<T> {
-  data:
-    | {
-        attributes: T;
-        id: number;
-      }[]
-    | null;
-}
-
-export interface StrapiMediaSingle<T> {
-  data: {
-    attributes: T;
-    id: number;
-  } | null;
-}
-
 export interface StrapiArray<T> {
   data: {
     attributes: T;
     id: number;
   }[];
+}
+
+export interface StrapiMedia {
+  data:
+    | {
+        attributes: {
+          url: string;
+        };
+        id: number;
+      }[]
+    | {
+        attributes: {
+          url: string;
+        };
+        id: number;
+      }
+    | null;
 }

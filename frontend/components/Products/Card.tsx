@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { ProductFlat } from '../../types';
 import Slider from 'react-slick';
 import Link from 'next/link';
-import { getImageUrl } from '../../helpers/helpers';
 import { useIsFavorite, changeFavorite } from '../../helpers/localStorage';
 import Image from 'next/image';
 
@@ -46,7 +45,7 @@ export default function Card({ product }: { product: ProductFlat }) {
           </button>
           <Slider {...sliderSettings}>
             {product.medya.map((image, index) => (
-              <img key={index} src={getImageUrl(image, 'small')} alt={`${product.ad} ${index} resim`} />
+              <img key={index} src={image} alt={`${product.ad} ${index} resim`} />
             ))}
           </Slider>
         </div>

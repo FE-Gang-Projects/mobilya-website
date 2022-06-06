@@ -1,7 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { ProductFlat } from '../../types';
 import { useOutsideAlerter } from '../../helpers/hooks';
-import { getImageUrl } from '../../helpers/helpers';
 import { clearFavorites, useLocalFavorites, changeFavorite } from '../../helpers/localStorage';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -10,7 +9,7 @@ function FavoriteCard({ product }: { product: ProductFlat }) {
   return (
     <Link href={'/urunler/' + product.slug}>
       <div className="favorite-products__card">
-        <img src={getImageUrl(product.medya[0], 'thumb')} alt={product.ad} />
+        <img src={product.medya[0]} alt={product.ad} />
         <div className="favorite-products__card__name">{product.ad} saknjhf </div>
         <div
           className="favorite-products__card__icon"

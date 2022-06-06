@@ -20,7 +20,7 @@ const Contact = () => {
       return;
     }
     axios
-      .post(`${BASE_URL}/iletisims`, {
+      .post(`${BASE_URL}iletisims`, {
         data: {
           isim: form.name,
           mesaj: form.message,

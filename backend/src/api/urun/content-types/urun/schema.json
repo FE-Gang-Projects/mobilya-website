@@ -41,6 +41,13 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::marka.marka"
+    },
+    "kisaAciklama": {
+      "type": "string",
+      "maxLength": 50
+    },
+    "ozellikler": {
+      "type": "json"
     }
   }
 }
