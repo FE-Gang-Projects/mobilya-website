@@ -6,6 +6,8 @@ export interface Product {
   kategori: Strapi<Category>;
   kampanya: boolean;
   marka: Strapi<Brand>;
+  kisaAciklama: string;
+  ozellikler: { [key: string]: string };
 }
 
 export interface ProductFlat {
@@ -17,4 +19,6 @@ export interface ProductFlat {
   marka: string;
   id: number;
   slug: string;
+  kisaAciklama: string;
+  ozellikler: { [key: string]: string };
 }

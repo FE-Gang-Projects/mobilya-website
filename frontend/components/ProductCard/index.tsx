@@ -1,15 +1,18 @@
 import { useState } from 'react';
-import { Product } from '../../types';
+import { ProductFlat } from '../../types';
 import Image from 'next/image';
-export default function ProductCard({ product }: { product: Product }) {
-  const [isFavorite, setIsFavorite] = useState(false);
+import { getImageUrl } from '../../helpers/helpers';
+import { useIsFavorite, changeFavorite } from '../../helpers/localStorage';
+
+export default function ProductCard({ product }: { product: ProductFlat }) {
+  const isFavorite = useIsFavorite(product);
 
   return (
     <div className="product-card__container">
       <div className="product-card">
-        <img src={product.medya[0]} alt="Ürün Resmi" />
+        <img src={getImageUrl(product.medya[0], 'medium')} alt="Ürün Resmi" />
         <h3>{product.ad}</h3>
-        <button className="product-card__favorite" onClick={() => setIsFavorite(!isFavorite)}>
+        <button className="product-card__favorite" onClick={() => changeFavorite(product, isFavorite)}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className={`${isFavorite ? 'active' : ''}`}

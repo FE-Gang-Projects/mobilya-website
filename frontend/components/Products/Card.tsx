@@ -2,42 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { ProductFlat } from '../../types';
 import Slider from 'react-slick';
 import Link from 'next/link';
-import { toast } from 'react-toastify';
-
-const BASE_URL = process.env.NEXT_PUBLIC_API_BASE_IMAGE_URL;
+import { getImageUrl } from '../../helpers/helpers';
+import { useIsFavorite, changeFavorite } from '../../helpers/localStorage';
+import Image from 'next/image';
 
 export default function Card({ product }: { product: ProductFlat }) {
-  const [isFavorite, setIsFavorite] = useState<boolean | null>(null);
-
-  const getFavorites = (): ProductFlat[] => {
-    const favorites = localStorage.getItem('favorites');
-    if (favorites) return JSON.parse(favorites);
-    return [];
-  };
-
-  const storageListener = () => {
-    const favorites = getFavorites();
-    setIsFavorite(favorites.some((p) => p.id === product.id));
-  };
-
-  useEffect(() => {
-    const favorites = getFavorites();
-    setIsFavorite(favorites.some((p) => p.id === product.id));
-    window.addEventListener('storage', storageListener);
-    return () => {
-      window.removeEventListener('storage', storageListener);
-    };
-  }, []);
-
-  const ChangeFavorite = () => {
-    const favorites = getFavorites();
-    const newFavorites = isFavorite
-      ? favorites.filter((fav) => fav.id !== product.id)
-      : [...favorites, product];
-    setIsFavorite(!isFavorite);
-    localStorage.setItem('favorites', JSON.stringify(newFavorites));
-    window.dispatchEvent(new Event('storage'));
-  };
+  const isFavorite = useIsFavorite(product);
 
   const sliderSettings = {
     autoplay: true,
@@ -58,8 +28,7 @@ export default function Card({ product }: { product: ProductFlat }) {
             className="product-card__favorite"
             onClick={(e) => {
               e.stopPropagation();
-              ChangeFavorite();
-              toast.success('Ürün favorilerinize eklendi!');
+              changeFavorite(product, isFavorite);
             }}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -77,7 +46,7 @@ export default function Card({ product }: { product: ProductFlat }) {
           </button>
           <Slider {...sliderSettings}>
             {product.medya.map((image, index) => (
-              <img key={index} src={BASE_URL + image.small.url} alt={`${product.ad} ${index} resim`} />
+              <img key={index} src={getImageUrl(image, 'small')} alt={`${product.ad} ${index} resim`} />
             ))}
           </Slider>
         </div>

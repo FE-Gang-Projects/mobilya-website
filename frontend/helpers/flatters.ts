@@ -38,8 +38,10 @@ const productFlatter = (products: StrapiArray<Product>): ProductFlat[] => {
       kampanya: item.attributes.kampanya,
       medya: mediaFlatter(item.attributes.medya),
       marka: item.attributes.marka.data?.attributes.ad || '',
+      kisaAciklama: item.attributes.kisaAciklama || '',
       kategori: item.attributes.kategori.data.attributes.name,
       slug: translateChars(item.attributes.ad),
+      ozellikler: item.attributes.ozellikler || {},
     };
   });
   return temp;

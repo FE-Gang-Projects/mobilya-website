@@ -3,8 +3,20 @@ import { Container, Title, ProductSlider } from '../components';
 import Image from 'next/image';
 import Slider from 'react-slick';
 import { useState } from 'react';
+import { getCategories, getProducts } from '../axios/getters';
+import { ProductFlat } from '../types';
 
-const Home = () => {
+export async function getStaticProps() {
+  const products = await getProducts();
+  const categories = await getCategories(products);
+  return {
+    props: {
+      products: products,
+      categories: categories,
+    },
+  };
+}
+const Home = ({ products }: { products: ProductFlat[] }) => {
   const [catalogImages, setCatalogImages] = useState([
     { img: '/images/seat.png', link: '/x', type: 'Koltuklar' },
     { img: '/images/kitchen.png', link: '/x', type: 'Mutfak takımı' },
@@ -25,54 +37,6 @@ const Home = () => {
     className: 'landing-slider',
   };
 
-  const products = [
-    {
-      id: 1,
-      ad: 'Royal Bebek Odası',
-      medya: ['https://www.sezerlermobilya.com/Uploads/UrunResimleri/thumb/royal-bebek-odasi-26ef.jpg'],
-      kampanya: true,
-      kategori: 'string',
-      marka: 'string',
-      aciklama: 'string',
-    },
-    {
-      id: 1,
-      ad: 'Royal Bebek Odası Deneme Uzun İsim',
-      medya: ['https://www.sezerlermobilya.com/Uploads/UrunResimleri/thumb/royal-bebek-odasi-26ef.jpg'],
-      kampanya: true,
-      kategori: 'string',
-      marka: 'string',
-      aciklama: 'string',
-    },
-    {
-      id: 1,
-      ad: 'Royal Bebek Odası',
-      medya: ['https://www.sezerlermobilya.com/Uploads/UrunResimleri/thumb/royal-bebek-odasi-26ef.jpg'],
-      kampanya: true,
-      kategori: 'string',
-      marka: 'string',
-      aciklama: 'string',
-    },
-    {
-      id: 1,
-      ad: 'Royal Bebek Odası',
-      medya: ['https://www.sezerlermobilya.com/Uploads/UrunResimleri/thumb/royal-bebek-odasi-26ef.jpg'],
-      kampanya: true,
-      kategori: 'string',
-      marka: 'string',
-      aciklama: 'string',
-    },
-    {
-      id: 1,
-      ad: 'Royal Bebek Odası',
-      medya: ['https://www.sezerlermobilya.com/Uploads/UrunResimleri/thumb/royal-bebek-odasi-26ef.jpg'],
-      kampanya: true,
-      kategori: 'string',
-      marka: 'string',
-      aciklama: 'string',
-    },
-  ];
-
   return (
     <Container>
       <Slider {...sliderSettings}>
@@ -85,8 +49,8 @@ const Home = () => {
       </Slider>
       <Title text="Kampanyalı Ürünler" />
       <ProductSlider time={700} products={products} />
-      <ProductSlider time={1400} products={products} />
-      <ProductSlider time={2100} products={products} />
+      {/* <ProductSlider time={1400} products={products} /> */}
+      {/* <ProductSlider time={2100} products={products} /> */}
       <Title text="Ürün Kataloğumuz" />
       <div className="catalog-container">
         {catalogImages.map((category, i) => (

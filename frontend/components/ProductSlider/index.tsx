@@ -1,9 +1,9 @@
 import React from 'react';
 import Slider from 'react-slick';
 import { ProductCard } from '../';
-import { Product } from '../../types';
+import { ProductFlat } from '../../types';
 
-export default function ProductSlider({ products, time }: { products: Product[]; time: number }) {
+export default function ProductSlider({ products, time }: { products: ProductFlat[]; time: number }) {
   const sliderSettings = {
     autoplay: true,
     infinite: true,
