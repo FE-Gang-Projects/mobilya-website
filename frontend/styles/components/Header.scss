@@ -11,6 +11,13 @@
     &-options {
       @include flex(space-around);
       flex: 1;
+      a {
+        width: 100%;
+        text-align: center;
+        &:hover {
+          font-weight: bold !important;
+        }
+      }
     }
     &-utils {
       @include flex(space-between, center);
@@ -169,6 +176,9 @@
     border-right: 1px #c4c4c4 solid;
     flex: 1;
     text-align: center;
+    &:hover {
+      font-weight: bold !important;
+    }
     &:last-child {
       border-right: none;
     }
