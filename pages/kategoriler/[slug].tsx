@@ -9,25 +9,37 @@ interface CategoryPageProps {
   subCategories: CategoryFlat[];
 }
 
+const checkHaveProducts = (subCategories: CategoryFlat[]) => {
+  return subCategories.some((subCategory) => {
+    return subCategory.products.length > 0;
+  });
+};
+
 export default function CategoryPage({ category, subCategories }: CategoryPageProps) {
   const router = useRouter();
+
   return (
     <Container>
       {category.products.length > 0 && category.altKategoriler?.length === 0 && (
         <ProductGrid products={category.products} title={category.name} />
       )}
-      {category.products.length === 0 && category.altKategoriler?.length === 0 && (
-        <>
-          <Title text={category.name} margin="sm" />
-          <div className="search-result__container">
-            <h4>
-              &quot;<span>{category.name}</span>&quot; kategorisinde henüz ürün yok.
-            </h4>
-            <button onClick={() => router.push('/')}>Ana Sayfaya Dön</button>
-          </div>
-        </>
-      )}
+      {category.products.length === 0 &&
+        (category.altKategoriler?.length === 0 || !checkHaveProducts(subCategories)) && (
+          <>
+            <Title text={category.name} margin="sm" />
+            <div className="search-result__container">
+              <h4>
+                &quot;<span>{category.name}</span>&quot; kategorisinde henüz ürün yok.
+              </h4>
+              <div className="actions">
+                <button onClick={() => router.push('/urunler')}>Tüm Ürünlere Dön</button>
+                <button onClick={() => router.push('/')}>Ana Sayfaya Dön</button>
+              </div>
+            </div>
+          </>
+        )}
       {category.altKategoriler.length > 0 &&
+        checkHaveProducts(subCategories) &&
         subCategories.map((cat) => (
           <ProductGrid key={cat.id} products={cat.products} max={8} title={cat.name} />
         ))}

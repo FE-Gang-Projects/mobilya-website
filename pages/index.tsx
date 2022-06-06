@@ -3,20 +3,22 @@ import { Container, Title, ProductSlider } from '../components';
 import Image from 'next/image';
 import Slider from 'react-slick';
 import { useState } from 'react';
-import { getCategories, getProducts } from '../axios/getters';
-import { ProductFlat } from '../types';
+import { getCategories, getProducts, getSlider } from '../axios/getters';
+import { ProductFlat, Slider as SliderType } from '../types';
 
 export async function getStaticProps() {
   const products = await getProducts();
   const categories = await getCategories(products);
+  const slider = await getSlider();
   return {
     props: {
       products: products,
       categories: categories,
+      slider: slider,
     },
   };
 }
-const Home = ({ products }: { products: ProductFlat[] }) => {
+const Home = ({ products, slider }: { products: ProductFlat[]; slider: SliderType[] }) => {
   const [catalogImages, setCatalogImages] = useState([
     { img: '/images/seat.png', link: '/x', type: 'Koltuklar' },
     { img: '/images/kitchen.png', link: '/x', type: 'Mutfak takımı' },
@@ -40,12 +42,11 @@ const Home = ({ products }: { products: ProductFlat[] }) => {
   return (
     <Container>
       <Slider {...sliderSettings}>
-        <div>
-          <Image src="/images/slider-img1.jpg" width={1920} height={850} alt="xx" />
-        </div>
-        <div>
-          <Image src="/images/slider-img2.jpg" width={1920} height={850} alt="xx" />
-        </div>
+        {slider.map((slide, index) => (
+          <Link key={index} href={slide.link}>
+            <Image src={slide.url} alt={slide.url} width={1920} height={850} />
+          </Link>
+        ))}
       </Slider>
       <Title text="Kampanyalı Ürünler" />
       <ProductSlider time={700} products={products} />

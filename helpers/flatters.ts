@@ -1,4 +1,13 @@
-import { Product, ProductFlat, Category, CategoryFlat, StrapiArray, StrapiMedia } from '../types';
+import {
+  Product,
+  ProductFlat,
+  Category,
+  CategoryFlat,
+  StrapiArray,
+  StrapiMedia,
+  SliderResponse,
+  Slider,
+} from '../types';
 import { translateChars } from './helpers';
 
 const categoryFlatter = (
@@ -48,4 +57,17 @@ const mediaFlatter = (media: StrapiMedia): string[] => {
   return temp;
 };
 
-export { categoryFlatter, mediaFlatter, productFlatter };
+const sliderFlatter = (res: SliderResponse): Slider[] => {
+  if (res?.data?.attributes?.media?.data?.length === 0) return [];
+  const temp = res.data.attributes.media.data.map((item, index) => {
+    return {
+      url: item.attributes.url,
+      link: res?.data?.attributes?.links[index.toString()]
+        ? res.data.attributes.links[index.toString()]
+        : '',
+    };
+  });
+  return temp;
+};
+
+export { categoryFlatter, mediaFlatter, productFlatter, sliderFlatter };
