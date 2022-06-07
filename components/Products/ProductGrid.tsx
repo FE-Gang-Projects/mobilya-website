@@ -1,5 +1,6 @@
 import Link from 'next/link';
-import { Title, ProductCardBig as Card } from '../../components';
+// import { Title, ProductCardBig as Card } from '../../components';
+import { Title, CardWithoutSlider as Card } from '../../components';
 import { ProductFlat } from '../../types';
 import { useRouter } from 'next/router';
 
