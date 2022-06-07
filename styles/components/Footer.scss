@@ -12,6 +12,9 @@
     @media screen and (max-width: $phone) {
       flex-direction: column;
       gap: 15px;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
     }
     &__container {
       width: 100%;
@@ -43,6 +46,8 @@
     gap: 100px;
     @media screen and (max-width: $phone) {
       gap: 20px;
+      align-items: center;
+      justify-content: center;
     }
     & > div {
       display: flex;
@@ -76,6 +81,9 @@
     }
     img:hover {
       opacity: 0.6;
+    }
+    @media screen and (max-width: $phone) {
+      justify-content: center;
     }
   }
 }

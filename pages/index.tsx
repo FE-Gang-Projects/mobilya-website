@@ -6,18 +6,6 @@ import { useState } from 'react';
 import { getCategories, getProducts, getSlider } from '../axios/getters';
 import { ProductFlat, Slider as SliderType } from '../types';
 
-export async function getStaticProps() {
-  const products = await getProducts();
-  const categories = await getCategories(products);
-  const slider = await getSlider();
-  return {
-    props: {
-      products: products,
-      categories: categories,
-      slider: slider,
-    },
-  };
-}
 const Home = ({ products, slider }: { products: ProductFlat[]; slider: SliderType[] }) => {
   const [catalogImages, setCatalogImages] = useState([
     { img: '/images/seat.png', link: '/x', type: 'Koltuklar' },
@@ -44,7 +32,9 @@ const Home = ({ products, slider }: { products: ProductFlat[]; slider: SliderTyp
       <Slider {...sliderSettings}>
         {slider.map((slide, index) => (
           <Link key={index} href={slide.link}>
-            <Image src={slide.url} alt={slide.url} width={1920} height={850} />
+            <div>
+              <Image src={slide.url} alt={slide.url} width={1920} height={850} />
+            </div>
           </Link>
         ))}
       </Slider>
@@ -67,5 +57,18 @@ const Home = ({ products, slider }: { products: ProductFlat[]; slider: SliderTyp
     </Container>
   );
 };
+
+export async function getStaticProps() {
+  const products = await getProducts();
+  const categories = await getCategories(products);
+  const slider = await getSlider();
+  return {
+    props: {
+      products: products,
+      categories: categories,
+      slider: slider,
+    },
+  };
+}
 
 export default Home;

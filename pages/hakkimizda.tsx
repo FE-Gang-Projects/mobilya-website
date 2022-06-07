@@ -1,9 +1,7 @@
 import Image from 'next/image';
-import { Container, SimpleLayout } from '../components';
+import { Container } from '../components';
 import { useState } from 'react';
 import { getAbout } from '../axios/getters';
-
-const BASE_URL = process.env.NEXT_PUBLIC_API_BASE_IMAGE_URL;
 
 const About = ({ text, shopImgs }: { text: any; shopImgs: any }) => {
   const imgs = shopImgs.map((img: any) => img.attributes.url);
@@ -11,37 +9,42 @@ const About = ({ text, shopImgs }: { text: any; shopImgs: any }) => {
 
   return (
     <Container>
-      <SimpleLayout title="Hakkımızda" text={text}>
-        <div className="about-img-gallery-container">
-          <Image
-            className="about-img-gallery-main-img"
-            src={activeImg}
-            width={750}
-            height={500}
-            alt="Dükkan Resmi"
-          />
-          <div className="about-img-gallery-options">
-            {imgs.map((src: any, i: number) => (
-              <Image
-                key={i}
-                className={activeImg === src ? 'active' : ''}
-                onClick={() => setActiveImg(src)}
-                src={src}
-                width={750}
-                height={500}
-                alt="Dükkan Resmi"
-              />
-            ))}
+      <div className="about-layout-container">
+        <div className="about-layout">
+          <h3>Hakkımızda</h3>
+          <p>{text}</p>
+        </div>
+        <div className="about-layout-asset-container">
+          <div className="about-img-gallery-container">
+            <Image
+              className="about-img-gallery-main-img"
+              src={activeImg}
+              width={750}
+              height={500}
+              alt="Dükkan Resmi"
+            />
+            <div className="about-img-gallery-options">
+              {imgs.map((src: any, i: number) => (
+                <Image
+                  key={i}
+                  className={activeImg === src ? 'active' : ''}
+                  onClick={() => setActiveImg(src)}
+                  src={src}
+                  width={150}
+                  height={100}
+                  alt="Dükkan Resmi"
+                />
+              ))}
+            </div>
           </div>
         </div>
-      </SimpleLayout>
+      </div>
     </Container>
   );
 };
 
 export async function getStaticProps() {
   const res = await getAbout();
-  console.log(res);
   return {
     props: {
       text: res.data.attributes.aciklama,

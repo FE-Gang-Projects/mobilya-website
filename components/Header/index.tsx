@@ -8,8 +8,10 @@ const Header = () => {
   return (
     <header className="header">
       <div className="header-top">
-        <Link href="/">
-          <Image src="/logos/logo.jpg" width={255.5} height={36} alt="Çalışkan Mobilya Logo" />
+        <Link href="/" passHref>
+          <a>
+            <Image src="/logos/logo.jpg" width={255.5} height={36} alt="Çalışkan Mobilya Logo" />
+          </a>
         </Link>
         <div className="header-top-options">
           {headerTopLinks.map((option) => (
