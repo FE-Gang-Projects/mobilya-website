@@ -9,8 +9,8 @@ function FavoriteCard({ product }: { product: ProductFlat }) {
   return (
     <Link href={'/urunler/' + product.slug}>
       <div className="favorite-products__card">
-        <img src={product.medya[0]} alt={product.ad} />
-        <div className="favorite-products__card__name">{product.ad} saknjhf </div>
+        <Image width={50} height={50} src={product.medya[0]} alt={product.ad} />
+        <div className="favorite-products__card__name">{product.ad}</div>
         <div
           className="favorite-products__card__icon"
           onClick={(e) => {

@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { Title, ProductCardBig as Card } from '../../components';
 import { ProductFlat } from '../../types';
+import { useRouter } from 'next/router';
 
 const ProductGrid = ({
   products,
@@ -13,6 +14,7 @@ const ProductGrid = ({
   max?: number;
   maxUrl?: string;
 }) => {
+  const router = useRouter();
   if (products.length > 0) {
     return (
       <>
@@ -21,7 +23,11 @@ const ProductGrid = ({
           {products.slice(0, max).map((product) => (
             <Card key={product.id} product={product} />
           ))}
-          {products.length > max && <div className="see-more">Tümünü Gör</div>}
+          {products.length > max && (
+            <div className="see-more" onClick={() => router.push(maxUrl)}>
+              Tümünü Gör
+            </div>
+          )}
         </div>
       </>
     );

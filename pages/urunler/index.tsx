@@ -31,7 +31,13 @@ const Products = ({ products, categories }: { products: ProductFlat[]; categorie
       <CategorySelector categories={categories} />
       {kampanya.length > 0 && <ProductGrid products={kampanya} title="Kampanyalı Ürünler" />}
       {categories.map((category) => (
-        <ProductGrid key={category.id} products={category.products} max={8} title={category.name} />
+        <ProductGrid
+          key={category.id}
+          products={category.products}
+          max={8}
+          maxUrl={`/kategoriler/${category.slug}`}
+          title={category.name}
+        />
       ))}
     </Container>
   );

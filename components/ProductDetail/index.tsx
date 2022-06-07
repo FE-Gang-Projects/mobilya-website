@@ -14,9 +14,6 @@ export default function ProductDetail({ product }: { product: ProductFlat }) {
     </div>
   ));
 
-  useEffect(() => {
-    console.log(product);
-  }, [product]);
   return (
     <>
       <div className="single-product__container">
@@ -39,10 +36,15 @@ export default function ProductDetail({ product }: { product: ProductFlat }) {
             </div>
           )}
           {attributes}
+          {product.aciklama && (
+            <>
+              <hr className="light" />
+              <div className="markdown">
+                <ReactMarkdown>{product.aciklama}</ReactMarkdown>
+              </div>
+            </>
+          )}
         </div>
-      </div>
-      <div>
-        <ReactMarkdown>{product.aciklama}</ReactMarkdown>
       </div>
     </>
   );
