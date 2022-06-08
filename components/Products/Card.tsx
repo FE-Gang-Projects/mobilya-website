@@ -49,7 +49,7 @@ export default function Card({ product }: { product: ProductFlat }) {
                 width={300}
                 height={170}
                 key={index}
-                src={image}
+                src={image.url}
                 alt={`${product.ad} ${index} resim`}
               />
             ))}

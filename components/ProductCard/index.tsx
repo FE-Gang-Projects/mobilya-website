@@ -11,7 +11,7 @@ export default function ProductCard({ product }: { product: ProductFlat }) {
     <Link href={'/urunler/' + product.slug}>
       <div className="product-card__container">
         <div className="product-card">
-          <Image className="img" width={409} height={200} src={product.medya[0]} alt="Ürün Resmi" />
+          <Image className="img" width={409} height={200} src={product.medya[0].url} alt="Ürün Resmi" />
           <h3>{product.ad}</h3>
           <button
             className="product-card__favorite"

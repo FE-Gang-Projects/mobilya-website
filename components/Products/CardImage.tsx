@@ -1,7 +1,8 @@
 import React, { useRef, useState } from 'react';
 import Image from 'next/image';
+import { Media } from '../../types';
 
-export default function CardImage({ images }: { images: string[] }) {
+export default function CardImage({ images }: { images: Media[] }) {
   const divRef = useRef<HTMLImageElement>(null);
   const imgCount = images.length;
   const [activeImg, setActiveImg] = useState(0);
@@ -32,7 +33,17 @@ export default function CardImage({ images }: { images: string[] }) {
     <div className="img-container" ref={divRef} onMouseMove={changeImg} onMouseLeave={resetId}>
       {images.map((image, index) => {
         if (index === activeImg) {
-          return <Image layout="fill" key={index} src={image} alt={`${index}. resim`} />;
+          return (
+            <Image
+              layout="fill"
+              objectFit="cover"
+              width={500}
+              height={500}
+              key={index}
+              src={image.url}
+              alt={`${index}. resim`}
+            />
+          );
         }
       })}
       <div

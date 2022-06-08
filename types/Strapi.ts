@@ -17,14 +17,24 @@ export interface StrapiMedia {
     | {
         attributes: {
           url: string;
+          width: number;
+          height: number;
         };
         id: number;
       }[]
     | {
         attributes: {
           url: string;
+          width: number;
+          height: number;
         };
         id: number;
       }
     | null;
+}
+
+export interface Media {
+  url: string;
+  width: number;
+  height: number;
 }

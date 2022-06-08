@@ -1,7 +1,7 @@
 import { Product, ProductFlat } from './Product';
 import { Category, CategoryFlat } from './Category';
 import { Slider, SliderResponse } from './Slider';
-import { Strapi, StrapiArray, StrapiMedia } from './Strapi';
+import { Strapi, StrapiArray, StrapiMedia, Media } from './Strapi';
 import Brand from './Brand';
 export type {
   Product,
@@ -14,4 +14,5 @@ export type {
   StrapiMedia,
   SliderResponse,
   Slider,
+  Media,
 };

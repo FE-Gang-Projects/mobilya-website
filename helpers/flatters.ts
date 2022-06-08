@@ -7,6 +7,7 @@ import {
   StrapiMedia,
   SliderResponse,
   Slider,
+  Media,
 } from '../types';
 import { translateChars } from './helpers';
 
@@ -20,7 +21,6 @@ const categoryFlatter = (
       id: category.id,
       products: products ? products.filter((item) => item.kategori === category.attributes.name) : [],
       medya: mediaFlatter(category.attributes.medya),
-      icon: mediaFlatter(category.attributes.icon),
       altKategoriler: category.attributes.altKategoriler.data.map((item) => item.id),
       slug: translateChars(category.attributes.name),
     };
@@ -46,13 +46,19 @@ const productFlatter = (products: StrapiArray<Product>): ProductFlat[] => {
   return temp;
 };
 
-const mediaFlatter = (media: StrapiMedia): string[] => {
+const mediaFlatter = (media: StrapiMedia): Media[] => {
   if (!media.data) return [];
   if (!Array.isArray(media.data)) {
-    return [media.data.attributes.url];
+    return [
+      {
+        url: media.data.attributes.url,
+        width: media.data.attributes.width,
+        height: media.data.attributes.height,
+      },
+    ];
   }
   const temp = media.data.map((item) => {
-    return item.attributes.url;
+    return { url: item.attributes.url, width: item.attributes.width, height: item.attributes.height };
   });
   return temp;
 };
