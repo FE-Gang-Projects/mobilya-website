@@ -34,7 +34,7 @@ const Products = ({ products, categories }: { products: ProductFlat[]; categorie
         <ProductGrid
           key={category.id}
           products={category.products}
-          max={8}
+          max={4}
           maxUrl={`/kategoriler/${category.slug}`}
           title={category.name}
         />

@@ -158,7 +158,7 @@
       top: 40px;
       right: 0;
       width: 300px;
-      background-color: #f5f7fa;
+      background-color: #fff;
       border-radius: 5px;
       filter: drop-shadow(0px 0px 1px #00000080);
       padding: 5px 10px;
@@ -199,35 +199,60 @@
     padding: 5px 0;
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 10px;
   }
   &__delete {
-    cursor: pointer;
-    font-size: 14px;
-    color: #2b2a28;
-    background-color: #db6060;
-    width: max-content;
-    padding: 5px 10px;
-    border-radius: 5px;
-    margin: 5px auto;
-    transition: all 0.2s ease-in-out;
-    &:hover {
-      color: #fff;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    button {
+      font-size: 12px;
+      font-weight: 600;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      background-color: #fff;
+      filter: drop-shadow(2px 2px 2px #db6060);
+      margin-bottom: 4px;
+      transition: all 0.25s ease-in-out;
+      &:hover {
+        color: #fff;
+        background-color: #db6060;
+      }
     }
   }
   &__card {
     width: 100%;
     background-color: #fff;
-    border-radius: 10px;
     display: flex;
-    filter: drop-shadow(0px 0px 2px #00000020);
     padding-right: 40px;
     position: relative;
     gap: 10px;
     cursor: pointer;
+    transition: letter-spacing 0.1s ease-in-out;
+    &:hover {
+      letter-spacing: 1px;
+    }
+    &:not(:first-child) {
+      padding: 5px 0;
+      border-top: 1px solid #b1afaf;
+    }
     &__name {
-      display: flex;
-      align-items: center;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+      max-width: 140px;
+      font-size: 15px;
+      font-weight: 600;
+      margin-top: 10px;
+    }
+    &__marka {
+      font-size: 13px !important;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+      max-width: 140px;
     }
     &__icon {
       position: absolute;
@@ -248,7 +273,6 @@
         color: #db6060;
       }
     }
-
     img {
       width: 50px;
       height: 50px;

@@ -3,9 +3,6 @@
 .title-container {
   @include flex(normal, center);
   margin: 50px 0;
-  &.m-30 {
-    margin: 30px 0;
-  }
 }
 .main-page-title {
   font-weight: 600;

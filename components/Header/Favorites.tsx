@@ -9,8 +9,10 @@ function FavoriteCard({ product }: { product: ProductFlat }) {
   return (
     <Link href={'/urunler/' + product.slug}>
       <div className="favorite-products__card">
-        <Image width={50} height={50} src={product.medya[0]} alt={product.ad} />
-        <div className="favorite-products__card__name">{product.ad}</div>
+        <Image width={45} height={45} src={product.medya[0]} alt={product.ad} />
+        <div className="favorite-products__card__name">
+          {product.ad} <br /> <span className="favorite-products__card__marka">{product.marka}</span>
+        </div>
         <div
           className="favorite-products__card__icon"
           onClick={(e) => {
@@ -52,7 +54,6 @@ export default function Favorites() {
           alt="Favori İkonu"
         />
       </div>
-
       <h4>
         Favorilerim <span>({favorites.length})</span>
       </h4>
@@ -70,7 +71,7 @@ export default function Favorites() {
                 clearFavorites();
                 setShow(false);
               }}>
-              Hepsini Kaldır
+              <button>Hepsini Kaldır</button>
             </div>
           </>
         ) : (

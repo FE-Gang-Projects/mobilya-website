@@ -1,6 +1,6 @@
-const Title = ({ text, margin }: { text: string; margin?: 'sm' }) => {
+const Title = ({ text }: { text: string }) => {
   return (
-    <div className={`title-container ${margin ? 'm-30' : ''}`}>
+    <div className={`title-container`}>
       <div className="title-hr" />
       <span className="main-page-title">{text}</span>
       <div className="title-hr" />

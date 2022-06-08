@@ -11,7 +11,6 @@ export default function CardWithoutSlider({ product }: { product: ProductFlat })
     <Link href={'/urunler/' + product.slug}>
       <div className="all-product-card__container">
         <div className="all-product-card__top">
-          {product.kampanya && <div className="all-product-card__campaign">Kampanya</div>}
           <button
             className="product-card__favorite"
             onClick={(e) => {
@@ -36,14 +35,16 @@ export default function CardWithoutSlider({ product }: { product: ProductFlat })
         </div>
         <div className="all-product-card__bottom">
           <div className="all-product-card__bottom__text">
-            <h2>{product.ad}</h2>
+            <h2>
+              <span>{product.ad}</span>
+              <span>
+                {product.kampanya && <div className="all-product-card__campaign">Kampanya</div>}
+              </span>
+            </h2>
             <h3>{product.marka}</h3>
             <p>{product.kisaAciklama}</p>
           </div>
         </div>
-        {/* <div className="all-product-card__actions">
-          <div className="all-product-card__inspect">İncele</div>
-        </div> */}
       </div>
     </Link>
   );
