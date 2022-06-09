@@ -2,20 +2,19 @@ import Link from 'next/link';
 import { Container, Title, ProductSlider } from '../components';
 import Image from 'next/image';
 import Slider from 'react-slick';
-import { useState } from 'react';
 import { getCategories, getProducts, getSlider } from '../axios/getters';
 import { ProductFlat, Slider as SliderType } from '../types';
 
 const Home = ({ products, slider }: { products: ProductFlat[]; slider: SliderType[] }) => {
-  const [catalogImages, setCatalogImages] = useState([
+  const catalogImages = [
     { img: '/images/seat.png', link: '/x', type: 'Koltuklar' },
     { img: '/images/kitchen.png', link: '/x', type: 'Mutfak takımı' },
     { img: '/images/bedroom.png', link: '/x', type: 'Yatak odası' },
     { img: '/images/seat.png', link: '/x', type: 'Koltuklar' },
     { img: '/images/kitchen.png', link: '/x', type: 'Mutfak takımı' },
     { img: '/images/kitchen.png', link: '/x', type: 'Mutfak takımı' },
-  ]);
-  //slider kütüphanesi doc'u => https://react-slick.neostack.com/docs/example/simple-slider
+  ];
+
   const sliderSettings = {
     autoplay: true,
     dots: true,
@@ -25,6 +24,7 @@ const Home = ({ products, slider }: { products: ProductFlat[]; slider: SliderTyp
     slidesToScroll: 1,
     pauseOnHover: false,
     className: 'landing-slider',
+    useTransform: false,
   };
 
   return (

@@ -1,28 +1,7 @@
-import Link from 'next/link';
-import {
-  Container,
-  Title,
-  ProductSlider,
-  ProductCardBig as Card,
-  CategorySelector,
-} from '../../components';
-import Image from 'next/image';
-import Slider from 'react-slick';
-import { useState, useMemo, useEffect } from 'react';
+import { Container, CategorySelector } from '../../components';
 import { CategoryFlat, ProductFlat } from '../../types';
 import { getProducts, getCategories } from '../../axios/getters';
 import ProductGrid from '../../components/Products/ProductGrid';
-
-export async function getStaticProps() {
-  const products = await getProducts();
-  const categories = await getCategories(products);
-  return {
-    props: {
-      products: products,
-      categories: categories,
-    },
-  };
-}
 
 const Products = ({ products, categories }: { products: ProductFlat[]; categories: CategoryFlat[] }) => {
   const kampanya = products.filter((product) => product.kampanya);
@@ -42,5 +21,16 @@ const Products = ({ products, categories }: { products: ProductFlat[]; categorie
     </Container>
   );
 };
+
+export async function getStaticProps() {
+  const products = await getProducts();
+  const categories = await getCategories(products);
+  return {
+    props: {
+      products: products,
+      categories: categories,
+    },
+  };
+}
 
 export default Products;
