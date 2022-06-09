@@ -32,19 +32,10 @@ export default function CardImage({ images }: { images: Media[] }) {
   return (
     <div className="img-container" ref={divRef} onMouseMove={changeImg} onMouseLeave={resetId}>
       {images.map((image, index) => {
-        if (index === activeImg) {
+        if (index === activeImg)
           return (
-            <Image
-              layout="fill"
-              objectFit="cover"
-              width={500}
-              height={500}
-              key={index}
-              src={image.url}
-              alt={`${index}. resim`}
-            />
+            <Image layout="fill" objectFit="cover" key={index} src={image.url} alt={`${index}. resim`} />
           );
-        }
       })}
       <div
         className="dots"

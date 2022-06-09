@@ -1,0 +1,20 @@
+.not-found-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 30px;
+  height: 60vh;
+  p {
+    font-size: 48px;
+    letter-spacing: 1px;
+    line-height: 1.5;
+  }
+  span {
+    font-size: 36px;
+    a {
+      font-weight: 700;
+      text-decoration: underline !important;
+    }
+  }
+}

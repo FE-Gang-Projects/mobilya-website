@@ -4,16 +4,23 @@ import { getProducts, getCategories } from '../../axios/getters';
 import ProductGrid from '../../components/Products/ProductGrid';
 
 const Products = ({ products, categories }: { products: ProductFlat[]; categories: CategoryFlat[] }) => {
-  const kampanya = products.filter((product) => product.kampanya);
+  const campaignProducts = products.filter((product) => product.kampanya);
   return (
     <Container>
       <CategorySelector categories={categories} />
-      {kampanya.length > 0 && <ProductGrid products={kampanya} title="Kampanyalı Ürünler" />}
+      {campaignProducts.length > 0 && (
+        <ProductGrid
+          products={campaignProducts}
+          title="Kampanyalı Ürünler"
+          max={8}
+          maxUrl="/kampanyalilar"
+        />
+      )}
       {categories.map((category) => (
         <ProductGrid
           key={category.id}
           products={category.products}
-          max={4}
+          max={8}
           maxUrl={`/kategoriler/${category.slug}`}
           title={category.name}
         />

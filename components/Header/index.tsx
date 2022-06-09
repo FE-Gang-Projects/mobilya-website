@@ -12,7 +12,7 @@ const Header = () => {
       <div className="header-top">
         <Link href="/" passHref>
           <a>
-            <Image src={logo} width={200} height={55} alt="Çalışkan Mobilya Logo" />
+            <Image src={logo} width={150} height={55} alt="Çalışkan Mobilya Logo" />
           </a>
         </Link>
         <div className="header-top-options">
