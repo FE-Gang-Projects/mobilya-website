@@ -6,10 +6,13 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 function FavoriteCard({ product }: { product: ProductFlat }) {
+  console.log(product);
   return (
     <Link href={'/urunler/' + product.slug}>
       <div className="favorite-products__card">
-        <Image width={45} height={45} src={product.medya[0]} alt={product.ad} />
+        <div>
+          <Image layout="fill" src={product.medya[0].url} alt={product.ad} />
+        </div>
         <div className="favorite-products__card__name">
           {product.ad} <br /> <span className="favorite-products__card__marka">{product.marka}</span>
         </div>
