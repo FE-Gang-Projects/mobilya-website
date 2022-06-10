@@ -16,13 +16,14 @@
     "incremental": true,
     "baseUrl": ".",
     "paths": {
-      "@components/*": ["components/*"],
-      "@components": ["components"],
       "@pages/*": ["pages/*"],
-      "@helpers/*": ["helpers/*"],
+      "@components": ["components"],
+      "@components/*": ["components/*"],
       "@helpers": ["helpers"],
+      "@helpers/*": ["helpers/*"],
+      "@public/*": ["public/*"],
       "@types": ["types"],
-      "@axios/*": ["axios/*"]
+      "@requests": ["requests"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

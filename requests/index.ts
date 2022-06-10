@@ -1,5 +1,5 @@
-import axios from '../axios';
-import { categoryFlatter, mediaFlatter, productFlatter, sliderFlatter } from '../helpers/flatters';
+import axios from '../axiosSetup';
+import { categoryFlatter, mediaFlatter, productFlatter, sliderFlatter } from '@helpers/flatters';
 import {
   ProductFlat,
   Product,
@@ -8,7 +8,7 @@ import {
   StrapiArray,
   SliderResponse,
   Slider,
-} from '../types';
+} from '@types';
 
 export const getCategories = async (products?: ProductFlat[]): Promise<CategoryFlat[]> => {
   const res: StrapiArray<Category> = (await axios.get('/kategoris')).data;

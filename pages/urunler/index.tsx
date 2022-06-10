@@ -1,7 +1,7 @@
 import { Container, CategorySelector } from '@components';
 import { CategoryFlat, ProductFlat } from '@types';
 import ProductGrid from '@components/Products/ProductGrid';
-import { getProductsAndCategories } from '@axios/getters';
+import { getProductsAndCategories } from '@requests';
 
 export async function getStaticProps() {
   const { products, categories } = await getProductsAndCategories();

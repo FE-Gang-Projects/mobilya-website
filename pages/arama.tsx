@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
-import { getProducts } from '@axios/getters';
+import { getProducts } from '@requests';
 import { Container, ProductGrid } from '@components';
 import { translateChars } from '@helpers/helpers';
 import { ProductFlat } from '@types';

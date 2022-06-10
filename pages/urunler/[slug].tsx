@@ -1,6 +1,6 @@
 import React from 'react';
 import ProductDetail from '@components/ProductDetail';
-import { getProducts } from '@axios/getters';
+import { getProducts } from '@requests';
 import { ProductFlat } from '@types';
 import { Container } from '@components';
 

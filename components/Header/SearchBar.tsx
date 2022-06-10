@@ -54,6 +54,7 @@ export default function SearchBar() {
       <button onClick={handleSearch} className={`${active ? 'active' : ''}`}>
         ARA
       </button>
+      {search.length > 0 && filteredProducts.length > 0 && <div>sa</div>}
     </div>
   );
 }

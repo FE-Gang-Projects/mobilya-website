@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { Container, Title, ProductSlider } from '@components';
 import Image from 'next/image';
 import Slider from 'react-slick';
-import { getProductsAndCategories, getSlider } from '@axios/getters';
+import { getProductsAndCategories, getSlider } from '@requests';
 import { ProductFlat, Slider as SliderType } from '@types';
 import { useEffect } from 'react';
 import { setLocalProducts } from '@helpers/localStorage';

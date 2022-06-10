@@ -1,5 +1,5 @@
 import React from 'react';
-import { getProductsAndCategories } from '@axios/getters';
+import { getProductsAndCategories } from '@requests';
 import { CategoryFlat } from '@types';
 import { Container, ProductGrid, Title } from '@components';
 import { useRouter } from 'next/router';
