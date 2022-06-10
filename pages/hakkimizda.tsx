@@ -50,6 +50,7 @@ export async function getStaticProps() {
       text: res.data.attributes.aciklama,
       shopImgs: res.data.attributes.dukkanResimleri.data,
     },
+    revalidate: 3600,
   };
 }
 

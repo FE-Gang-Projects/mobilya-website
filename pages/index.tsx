@@ -68,6 +68,7 @@ export async function getStaticProps() {
       categories: categories,
       slider: slider,
     },
+    revalidate: 3600,
   };
 }
 

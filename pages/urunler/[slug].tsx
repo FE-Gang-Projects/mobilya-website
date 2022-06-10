@@ -4,6 +4,14 @@ import { getProducts } from '../../axios/getters';
 import { ProductFlat } from '../../types';
 import { Container } from '../../components';
 
+const SingleProduct = ({ product }: { product: ProductFlat }) => {
+  return (
+    <Container>
+      <ProductDetail product={product} />
+    </Container>
+  );
+};
+
 export async function getStaticPaths() {
   const products = await getProducts();
 
@@ -24,13 +32,8 @@ export async function getStaticProps({ params }: { params: { slug: string } }) {
     props: {
       product: product,
     },
+    revalidate: 3600,
   };
 }
 
-export default function SingleProduct({ product }: { product: ProductFlat }) {
-  return (
-    <Container>
-      <ProductDetail product={product} />
-    </Container>
-  );
-}
+export default SingleProduct;

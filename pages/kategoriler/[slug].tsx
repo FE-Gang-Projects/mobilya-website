@@ -26,7 +26,7 @@ export default function CategoryPage({ category, subCategories }: CategoryPagePr
       {category.products.length === 0 &&
         (category.altKategoriler?.length === 0 || !checkHaveProducts(subCategories)) && (
           <>
-            <Title text={category.name} margin="sm" />
+            <Title text={category.name} />
             <div className="search-result__container">
               <h4>
                 &quot;<span>{category.name}</span>&quot; kategorisinde henüz ürün yok.
@@ -71,5 +71,6 @@ export async function getStaticProps({ params }: { params: { slug: string } }) {
       category: category,
       subCategories: subCategories,
     },
+    revalidate: 3600,
   };
 }

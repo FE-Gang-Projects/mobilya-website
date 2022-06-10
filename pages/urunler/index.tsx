@@ -37,6 +37,7 @@ export async function getStaticProps() {
       products: products,
       categories: categories,
     },
+    revalidate: 3600,
   };
 }
 

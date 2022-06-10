@@ -27,6 +27,7 @@ export async function getStaticProps() {
       campaignProducts: campaignProducts,
       categories: categories,
     },
+    revalidate: 3600,
   };
 }
 
