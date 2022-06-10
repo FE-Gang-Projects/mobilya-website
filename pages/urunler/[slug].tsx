@@ -1,12 +1,13 @@
-import React from 'react';
-import ProductDetail from '@components/ProductDetail';
 import { getProducts } from '@requests';
+import { Container, ProductDetail } from '@components';
 import { ProductFlat } from '@types';
-import { Container } from '@components';
 
 const SingleProduct = ({ product }: { product: ProductFlat }) => {
   return (
-    <Container>
+    <Container
+      title={product.ad}
+      keywords={`${product.ad}, ${product.kategori}`}
+      description={`${product.ad}: ${product.aciklama || product.kisaAciklama}`}>
       <ProductDetail product={product} />
     </Container>
   );

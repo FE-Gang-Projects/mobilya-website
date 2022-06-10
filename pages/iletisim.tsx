@@ -1,4 +1,4 @@
-import { Container } from '../components';
+import { Container } from '@components';
 import Image from 'next/image';
 import { useState } from 'react';
 import axios from 'axios';
@@ -31,7 +31,10 @@ const Contact = () => {
   };
 
   return (
-    <Container>
+    <Container
+      title="İletişim Formu"
+      keywords="iletişim, mesaj, çalışkan mobilya, çanakkale, lapseki"
+      description="Çalışkan Mobilya'ya mesaj göndermek için tıklayın! Mobilyacı Çanakkale / Lapseki.">
       <div className="contact-layout-container">
         <div className="contact-layout">
           <h3>İletişim</h3>

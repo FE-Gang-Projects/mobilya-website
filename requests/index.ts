@@ -1,5 +1,5 @@
 import axios from '../axiosSetup';
-import { categoryFlatter, mediaFlatter, productFlatter, sliderFlatter } from '@helpers/flatters';
+import { categoryFlatter, productFlatter, sliderFlatter } from '@helpers/flatters';
 import {
   ProductFlat,
   Product,

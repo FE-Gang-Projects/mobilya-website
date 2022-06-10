@@ -34,7 +34,10 @@ const Home = ({ products, slider }: { products: ProductFlat[]; slider: SliderTyp
   }, [products]);
 
   return (
-    <Container>
+    <Container
+      title="Çalışkan Mobilya"
+      keywords="mobilya, kampanya, indirim, koltuk takımı, yatak odası, beyaz eşya, televizyon, genç odası, yemek odası, mutfak masası"
+      description="Çalışkan Mobilyada, evinize yenilik katacak, koltuk takımı, yatak odası, beyaz eşya, televizyon, genç odası, yemek odası, mutfak masası gibi ürünlerde kampanyalar sizi bekliyor! ">
       <Slider {...sliderSettings}>
         {slider.map((slide, index) => (
           <Link key={index} href={slide.link}>

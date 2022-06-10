@@ -8,7 +8,10 @@ const About = ({ text, shopImgs }: { text: any; shopImgs: any }) => {
   const [activeImg, setActiveImg] = useState(imgs[0]);
 
   return (
-    <Container>
+    <Container
+      title="Hakkımızda"
+      keywords="çalışkan, mobilya, çalışkan mobilya, lapseki, çanakkale, türkiye"
+      description="Çalışkan Mobilya hakkında bilgi sahibi olmak için tıklayın! Mobilyacı Çanakkale / Lapseki.">
       <div className="about-layout-container">
         <div className="about-layout">
           <h3>Hakkımızda</h3>

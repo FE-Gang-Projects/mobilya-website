@@ -1,7 +1,6 @@
-import { Container, CategorySelector } from '@components';
+import { Container, CategorySelector, ProductGrid } from '@components';
 import { CategoryFlat, ProductFlat } from '@types';
 import { getProducts, getCategories } from '@requests';
-import ProductGrid from '@components/Products/ProductGrid';
 
 interface CampaignProductsProps {
   campaignProducts: ProductFlat[];
@@ -10,7 +9,10 @@ interface CampaignProductsProps {
 
 const CampaignProducts = ({ campaignProducts, categories }: CampaignProductsProps) => {
   return (
-    <Container>
+    <Container
+      title="Kampanyalı Ürünler"
+      keywords="mobilya, kampanya, indirim, koltuk takımı, yatak odası, beyaz eşya, televizyon, genç odası, yemek odası, mutfak masası"
+      description="Kampanyalı Ürünler - İndirimli Ürünler: Koltuk Takımı, Yatak Odası, Beyaz Eşya, Televizyon, Genç Odası, Yemek Odası, Mutfak Masası.">
       <CategorySelector categories={categories} />
       <ProductGrid products={campaignProducts} title="Kampanyalı Ürünler" />
     </Container>

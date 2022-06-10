@@ -45,7 +45,12 @@ export default function CategoryPage({ category, subCategories }: CategoryPagePr
   const router = useRouter();
 
   return (
-    <Container>
+    <Container
+      title={`${category.name}`}
+      keywords={`${category.name}, ${category.altKategoriler.join(', ')}`}
+      description={`${category.name}, ${category.altKategoriler.join(
+        ', '
+      )} kategorilerinde birçok çeşit ve uygun fiyatlar sizi bekliyor.`}>
       {category.products.length > 0 && category.altKategoriler?.length === 0 && (
         <ProductGrid products={category.products} title={category.name} />
       )}

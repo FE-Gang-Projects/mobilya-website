@@ -1,6 +1,5 @@
-import { Container, CategorySelector } from '@components';
+import { Container, CategorySelector, ProductGrid } from '@components';
 import { CategoryFlat, ProductFlat } from '@types';
-import ProductGrid from '@components/Products/ProductGrid';
 import { getProductsAndCategories } from '@requests';
 
 export async function getStaticProps() {
@@ -17,7 +16,10 @@ export async function getStaticProps() {
 const Products = ({ products, categories }: { products: ProductFlat[]; categories: CategoryFlat[] }) => {
   const campaignProducts = products.filter((product) => product.kampanya);
   return (
-    <Container>
+    <Container
+      title="Tüm Ürünler"
+      keywords="mobilya, kampanya, indirim, koltuk takımı, yatak odası, beyaz eşya, televizyon, genç odası, yemek odası, mutfak masası"
+      description="Çalışkan Mobilyada, evinize yenilik katacak, koltuk takımı, yatak odası, beyaz eşya, televizyon, genç odası, yemek odası, mutfak masası gibi ürünlerde kampanyalar sizi bekliyor!">
       <CategorySelector categories={categories} />
       {campaignProducts.length > 0 && (
         <ProductGrid
