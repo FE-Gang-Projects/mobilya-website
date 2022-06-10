@@ -8,6 +8,7 @@ import ProductCardBig from './Products/Card';
 import CardWithoutSlider from './Products/CardWithoutSlider';
 import CategorySelector from './Products/CategorySelector';
 import ProductGrid from './Products/ProductGrid';
+import FavoriteCard from './Header/FavoriteCard';
 
 export {
   Container,
@@ -20,4 +21,5 @@ export {
   CategorySelector,
   ProductGrid,
   CardWithoutSlider,
+  FavoriteCard,
 };

@@ -1,21 +1,23 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useLocalProducts } from '@helpers/localStorage';
 import { translateChars } from '@helpers/helpers';
+import { FavoriteCard } from '@components';
+import { useOutsideAlerter } from '@helpers/hooks';
 
 export default function SearchBar() {
   const [search, setSearch] = useState('');
   const products = useLocalProducts();
 
+  const [show, setShow] = useState(false);
+  const divRef = useRef<HTMLDivElement>(null);
+  useOutsideAlerter(() => setShow(false), divRef);
+
   const filteredProducts = useMemo(
     () => products.filter((product) => translateChars(product.ad).includes(translateChars(search))),
     [products, search]
   );
-
-  useEffect(() => {
-    console.log(filteredProducts);
-  }, [filteredProducts]);
 
   const router = useRouter();
   const { kelime } = router.query;
@@ -35,13 +37,18 @@ export default function SearchBar() {
   };
 
   return (
-    <div className="header-top-search-container">
+    <div className="header-top-search-container" ref={divRef}>
       <input
         value={search}
         onChange={(e) => setSearch(e.target.value)}
+        onFocus={() => setShow(true)}
         onKeyPress={(e) => {
           if (e.key === 'Enter' && search.length > 0) {
-            handleSearch();
+            if (filteredProducts.length === 1) {
+              router.push('/urunler/' + filteredProducts[0].slug);
+            } else {
+              handleSearch();
+            }
           }
         }}
         type="text"
@@ -54,7 +61,16 @@ export default function SearchBar() {
       <button onClick={handleSearch} className={`${active ? 'active' : ''}`}>
         ARA
       </button>
-      {search.length > 0 && filteredProducts.length > 0 && <div>sa</div>}
+      {search.length > 0 && filteredProducts.length > 0 && show && (
+        <div className="search-results scroll">
+          <div>
+            {search.length > 0 &&
+              filteredProducts.map((product) => (
+                <FavoriteCard key={product.id} product={product} search />
+              ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 }
