@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { Title, CardWithoutSlider as Card } from '../../components';
-import { ProductFlat } from '../../types';
+import { Title, CardWithoutSlider as Card } from '@components';
+import { ProductFlat } from '@types';
 
 interface ProductGridProps {
   products: ProductFlat[];

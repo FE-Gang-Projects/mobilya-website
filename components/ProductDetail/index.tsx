@@ -1,7 +1,7 @@
 import React from 'react';
-import { ProductFlat } from '../../types';
+import { ProductFlat } from '@types';
 import ReactMarkdown from 'react-markdown';
-import { getCategoryUrl } from '../../helpers/helpers';
+import { getCategoryUrl } from '@helpers/helpers';
 import Link from 'next/link';
 import ProductImages from './ProductImages';
 

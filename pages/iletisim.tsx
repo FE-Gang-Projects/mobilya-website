@@ -24,8 +24,8 @@ const Contact = () => {
         },
       })
       .then(() => toast.success('Mesaj başarıyla gönderildi!'))
-      .catch((err) => {
-        if (err.response.status === 400) toast.error('Lütfen geçerli bir mail adresi giriniz!');
+      .catch((err: any) => {
+        if (err?.response?.status === 400) toast.error('Lütfen geçerli bir mail adresi giriniz!');
         else toast.error('Mesaj gönderilemedi!');
       });
   };

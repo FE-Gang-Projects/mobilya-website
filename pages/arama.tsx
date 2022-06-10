@@ -1,9 +1,9 @@
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
-import { getProducts } from '../axios/getters';
-import { Container, ProductGrid } from '../components';
-import { translateChars } from '../helpers/helpers';
-import { ProductFlat } from '../types';
+import { getProducts } from '@axios/getters';
+import { Container, ProductGrid } from '@components';
+import { translateChars } from '@helpers/helpers';
+import { ProductFlat } from '@types';
 
 export async function getStaticProps() {
   const products = await getProducts();

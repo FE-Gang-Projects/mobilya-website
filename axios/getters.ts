@@ -25,4 +25,13 @@ export const getSlider = async (): Promise<Slider[]> => {
   return sliderFlatter(res);
 };
 
+export const getProductsAndCategories = async (): Promise<{
+  products: ProductFlat[];
+  categories: CategoryFlat[];
+}> => {
+  const products: ProductFlat[] = await getProducts();
+  const categories: CategoryFlat[] = await getCategories(products);
+  return { products, categories };
+};
+
 export const getAbout = async (): Promise<any> => (await axios('/hakkimizda')).data;

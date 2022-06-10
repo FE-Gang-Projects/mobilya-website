@@ -1,7 +1,7 @@
-import { Container, CategorySelector } from '../components';
-import { CategoryFlat, ProductFlat } from '../types';
-import { getProducts, getCategories } from '../axios/getters';
-import ProductGrid from '../components/Products/ProductGrid';
+import { Container, CategorySelector } from '@components';
+import { CategoryFlat, ProductFlat } from '@types';
+import { getProducts, getCategories } from '@axios/getters';
+import ProductGrid from '@components/Products/ProductGrid';
 
 interface CampaignProductsProps {
   campaignProducts: ProductFlat[];

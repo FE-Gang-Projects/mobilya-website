@@ -1,7 +1,18 @@
-import { Container, CategorySelector } from '../../components';
-import { CategoryFlat, ProductFlat } from '../../types';
-import { getProducts, getCategories } from '../../axios/getters';
-import ProductGrid from '../../components/Products/ProductGrid';
+import { Container, CategorySelector } from '@components';
+import { CategoryFlat, ProductFlat } from '@types';
+import ProductGrid from '@components/Products/ProductGrid';
+import { getProductsAndCategories } from '@axios/getters';
+
+export async function getStaticProps() {
+  const { products, categories } = await getProductsAndCategories();
+  return {
+    props: {
+      products: products,
+      categories: categories,
+    },
+    revalidate: 3600,
+  };
+}
 
 const Products = ({ products, categories }: { products: ProductFlat[]; categories: CategoryFlat[] }) => {
   const campaignProducts = products.filter((product) => product.kampanya);
@@ -28,17 +39,5 @@ const Products = ({ products, categories }: { products: ProductFlat[]; categorie
     </Container>
   );
 };
-
-export async function getStaticProps() {
-  const products = await getProducts();
-  const categories = await getCategories(products);
-  return {
-    props: {
-      products: products,
-      categories: categories,
-    },
-    revalidate: 3600,
-  };
-}
 
 export default Products;

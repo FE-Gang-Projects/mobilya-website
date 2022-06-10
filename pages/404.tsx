@@ -1,4 +1,4 @@
-import { Container } from '../components';
+import { Container } from '@components';
 import Link from 'next/link';
 
 const PageNotFound = () => {

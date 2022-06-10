@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import ScrollContainer from 'react-indiana-drag-scroll';
-import { Media } from '../../types';
+import { Media } from '@types';
 
 export default function ProductImages({ images }: { images: Media[] }) {
   const [currentImage, setCurrentImage] = React.useState(0);

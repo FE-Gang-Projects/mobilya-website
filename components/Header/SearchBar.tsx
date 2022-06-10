@@ -1,10 +1,23 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
+import { useLocalProducts } from '@helpers/localStorage';
+import { translateChars } from '@helpers/helpers';
 
 export default function SearchBar() {
-  const router = useRouter();
   const [search, setSearch] = useState('');
+  const products = useLocalProducts();
+
+  const filteredProducts = useMemo(
+    () => products.filter((product) => translateChars(product.ad).includes(translateChars(search))),
+    [products, search]
+  );
+
+  useEffect(() => {
+    console.log(filteredProducts);
+  }, [filteredProducts]);
+
+  const router = useRouter();
   const { kelime } = router.query;
 
   useEffect(() => {

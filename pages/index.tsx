@@ -1,9 +1,11 @@
 import Link from 'next/link';
-import { Container, Title, ProductSlider } from '../components';
+import { Container, Title, ProductSlider } from '@components';
 import Image from 'next/image';
 import Slider from 'react-slick';
-import { getCategories, getProducts, getSlider } from '../axios/getters';
-import { ProductFlat, Slider as SliderType } from '../types';
+import { getProductsAndCategories, getSlider } from '@axios/getters';
+import { ProductFlat, Slider as SliderType } from '@types';
+import { useEffect } from 'react';
+import { setLocalProducts } from '@helpers/localStorage';
 
 const Home = ({ products, slider }: { products: ProductFlat[]; slider: SliderType[] }) => {
   const catalogImages = [
@@ -26,6 +28,10 @@ const Home = ({ products, slider }: { products: ProductFlat[]; slider: SliderTyp
     className: 'landing-slider',
     useTransform: false,
   };
+
+  useEffect(() => {
+    setLocalProducts(products);
+  }, [products]);
 
   return (
     <Container>
@@ -59,8 +65,7 @@ const Home = ({ products, slider }: { products: ProductFlat[]; slider: SliderTyp
 };
 
 export async function getStaticProps() {
-  const products = await getProducts();
-  const categories = await getCategories(products);
+  const { products, categories } = await getProductsAndCategories();
   const slider = await getSlider();
   return {
     props: {

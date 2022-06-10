@@ -1,7 +1,6 @@
-import { useState } from 'react';
-import { ProductFlat } from '../../types';
+import { ProductFlat } from '@types';
 import Image from 'next/image';
-import { useIsFavorite, changeFavorite } from '../../helpers/localStorage';
+import { useIsFavorite, changeFavorite } from '@helpers/localStorage';
 import Link from 'next/link';
 
 export default function ProductCard({ product }: { product: ProductFlat }) {

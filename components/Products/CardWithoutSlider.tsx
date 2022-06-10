@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { ProductFlat } from '../../types';
+import { ProductFlat } from '@types';
 import Link from 'next/link';
-import { useIsFavorite, changeFavorite } from '../../helpers/localStorage';
+import { useIsFavorite, changeFavorite } from '@helpers/localStorage';
 import CardImage from './CardImage';
 
 export default function CardWithoutSlider({ product }: { product: ProductFlat }) {

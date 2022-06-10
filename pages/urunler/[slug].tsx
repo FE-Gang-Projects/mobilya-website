@@ -1,8 +1,8 @@
 import React from 'react';
-import ProductDetail from '../../components/ProductDetail';
-import { getProducts } from '../../axios/getters';
-import { ProductFlat } from '../../types';
-import { Container } from '../../components';
+import ProductDetail from '@components/ProductDetail';
+import { getProducts } from '@axios/getters';
+import { ProductFlat } from '@types';
+import { Container } from '@components';
 
 const SingleProduct = ({ product }: { product: ProductFlat }) => {
   return (

@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
-import { ProductFlat } from '../../types';
-import { useOutsideAlerter } from '../../helpers/hooks';
-import { clearFavorites, useLocalFavorites, changeFavorite } from '../../helpers/localStorage';
+import { ProductFlat } from '@types';
+import { useOutsideAlerter } from '@helpers/hooks';
+import { clearFavorites, useLocalFavorites, changeFavorite } from '@helpers/localStorage';
 import Link from 'next/link';
 import Image from 'next/image';
 

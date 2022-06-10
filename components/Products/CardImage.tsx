@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import Image from 'next/image';
-import { Media } from '../../types';
+import { Media } from '@types';
 
 export default function CardImage({ images }: { images: Media[] }) {
   const divRef = useRef<HTMLImageElement>(null);

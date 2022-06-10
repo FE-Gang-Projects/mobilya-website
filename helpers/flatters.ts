@@ -8,7 +8,7 @@ import {
   SliderResponse,
   Slider,
   Media,
-} from '../types';
+} from '@types';
 import { translateChars } from './helpers';
 
 const categoryFlatter = (

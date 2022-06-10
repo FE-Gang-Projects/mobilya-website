@@ -1,7 +1,7 @@
 import React from 'react';
 import Slider from 'react-slick';
 import { ProductCard } from '../';
-import { ProductFlat } from '../../types';
+import { ProductFlat } from '@types';
 
 export default function ProductSlider({ products, time }: { products: ProductFlat[]; time: number }) {
   const sliderSettings = {

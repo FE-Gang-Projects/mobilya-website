@@ -1,12 +1,38 @@
 import React from 'react';
-import { getCategories, getProducts } from '../../axios/getters';
-import { CategoryFlat } from '../../types';
-import { Container, ProductGrid, Title } from '../../components';
+import { getProductsAndCategories } from '@axios/getters';
+import { CategoryFlat } from '@types';
+import { Container, ProductGrid, Title } from '@components';
 import { useRouter } from 'next/router';
 
 interface CategoryPageProps {
   category: CategoryFlat;
   subCategories: CategoryFlat[];
+}
+
+export async function getStaticPaths() {
+  const { categories } = await getProductsAndCategories();
+  const paths = categories.map((category) => ({
+    params: {
+      slug: category.slug,
+    },
+  }));
+  return {
+    paths: paths,
+    fallback: true,
+  };
+}
+
+export async function getStaticProps({ params }: { params: { slug: string } }) {
+  const { categories } = await getProductsAndCategories();
+  const category = categories.filter((cat) => cat.slug === params.slug)[0];
+  const subCategories = categories.filter((cat) => category.altKategoriler.includes(cat.id)) || [];
+  return {
+    props: {
+      category: category,
+      subCategories: subCategories,
+    },
+    revalidate: 3600,
+  };
 }
 
 const checkHaveProducts = (subCategories: CategoryFlat[]) => {
@@ -45,32 +71,4 @@ export default function CategoryPage({ category, subCategories }: CategoryPagePr
         ))}
     </Container>
   );
-}
-
-export async function getStaticPaths() {
-  const products = await getProducts();
-  const categories = await getCategories(products);
-  const paths = categories.map((category) => ({
-    params: {
-      slug: category.slug,
-    },
-  }));
-  return {
-    paths: paths,
-    fallback: true,
-  };
-}
-
-export async function getStaticProps({ params }: { params: { slug: string } }) {
-  const products = await getProducts();
-  const categories = await getCategories(products);
-  const category = categories.filter((cat) => cat.slug === params.slug)[0];
-  const subCategories = categories.filter((cat) => category.altKategoriler.includes(cat.id)) || [];
-  return {
-    props: {
-      category: category,
-      subCategories: subCategories,
-    },
-    revalidate: 3600,
-  };
 }

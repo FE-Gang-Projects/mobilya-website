@@ -1,7 +1,7 @@
 import Image from 'next/image';
-import { Container } from '../components';
+import { Container } from '@components';
 import { useState } from 'react';
-import { getAbout } from '../axios/getters';
+import { getAbout } from '@axios/getters';
 
 const About = ({ text, shopImgs }: { text: any; shopImgs: any }) => {
   const imgs = shopImgs.map((img: any) => img.attributes.url);
