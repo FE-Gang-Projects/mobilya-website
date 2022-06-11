@@ -1,12 +1,13 @@
 import React from 'react';
 import { getProductsAndCategories } from '@requests';
 import { CategoryFlat } from '@types';
-import { Container, ProductGrid, Title } from '@components';
+import { Container, ProductGrid, Title, CategorySelector } from '@components';
 import { useRouter } from 'next/router';
 
 interface CategoryPageProps {
   category: CategoryFlat;
   subCategories: CategoryFlat[];
+  categories: CategoryFlat[];
 }
 
 export async function getStaticPaths() {
@@ -30,6 +31,7 @@ export async function getStaticProps({ params }: { params: { slug: string } }) {
     props: {
       category: category,
       subCategories: subCategories,
+      categories: categories,
     },
     revalidate: 3600,
   };
@@ -41,7 +43,7 @@ const checkHaveProducts = (subCategories: CategoryFlat[]) => {
   });
 };
 
-export default function CategoryPage({ category, subCategories }: CategoryPageProps) {
+export default function CategoryPage({ category, subCategories, categories }: CategoryPageProps) {
   const router = useRouter();
 
   return (
@@ -50,7 +52,9 @@ export default function CategoryPage({ category, subCategories }: CategoryPagePr
       keywords={`${category.name}, ${category.altKategoriler.join(', ')}`}
       description={`${category.name}, ${category.altKategoriler.join(
         ', '
-      )} kategorilerinde birçok çeşit ve uygun fiyatlar sizi bekliyor.`}>
+      )} kategorilerinde birçok çeşit ve uygun fiyatlar sizi bekliyor.`}
+    >
+      <CategorySelector categories={categories} />
       {category.products.length > 0 && category.altKategoriler?.length === 0 && (
         <ProductGrid products={category.products} title={category.name} />
       )}
