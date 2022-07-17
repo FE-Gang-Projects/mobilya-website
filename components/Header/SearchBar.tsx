@@ -4,10 +4,11 @@ import { useRouter } from 'next/router';
 import { useLocalProducts } from '@helpers/localStorage';
 import { translateChars } from '@helpers/helpers';
 import { FavoriteCard } from '@components';
-import { useOutsideAlerter } from '@helpers/hooks';
+import { useDebounce, useOutsideAlerter } from '@helpers/hooks';
 
 export default function SearchBar() {
   const [search, setSearch] = useState('');
+  const debouncedSearch = useDebounce(search, 100);
   const products = useLocalProducts();
 
   const [show, setShow] = useState(false);
@@ -15,8 +16,9 @@ export default function SearchBar() {
   useOutsideAlerter(() => setShow(false), divRef);
 
   const filteredProducts = useMemo(
-    () => products.filter((product) => translateChars(product.ad).includes(translateChars(search))),
-    [products, search]
+    () =>
+      products.filter((product) => translateChars(product.ad).includes(translateChars(debouncedSearch))),
+    [products, debouncedSearch]
   );
 
   const router = useRouter();

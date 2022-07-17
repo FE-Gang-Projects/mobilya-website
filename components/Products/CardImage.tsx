@@ -1,6 +1,7 @@
-import React, { useRef, useState } from 'react';
+import React, { MouseEventHandler, useRef, useState } from 'react';
 import Image from 'next/image';
 import { Media } from '@types';
+import { throttle } from '@helpers/helpers';
 
 export default function CardImage({ images }: { images: Media[] }) {
   const divRef = useRef<HTMLImageElement>(null);
@@ -17,7 +18,7 @@ export default function CardImage({ images }: { images: Media[] }) {
     }, 2500);
   };
 
-  const changeImg = (event: any) => {
+  const changeImg: Function = (event: any) => {
     if (!divRef.current || imgCount === 1) return;
     clearTimeout(timerID);
     const xoff = divRef.current.getBoundingClientRect().left;
@@ -29,8 +30,14 @@ export default function CardImage({ images }: { images: Media[] }) {
     }
   };
 
+  const MouseEventHandlerThrottled = throttle(changeImg, 100);
+
   return (
-    <div className="img-container" ref={divRef} onMouseMove={changeImg} onMouseLeave={resetId}>
+    <div
+      className="img-container"
+      ref={divRef}
+      onMouseMove={MouseEventHandlerThrottled}
+      onMouseLeave={resetId}>
       {images.map((image, index) => {
         if (index === activeImg)
           return (
