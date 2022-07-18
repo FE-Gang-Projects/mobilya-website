@@ -3,11 +3,13 @@ import { Container, ProductDetail } from '@components';
 import { ProductFlat } from '@types';
 
 const SingleProduct = ({ product }: { product: ProductFlat }) => {
+  // console.log(product);
   return (
     <Container
       title={product.ad}
       keywords={`${product.ad}, ${product.kategori}`}
-      description={`${product.ad}: ${product.aciklama || product.kisaAciklama}`}>
+      description={`${product.ad}: ${product.aciklama || product.kisaAciklama}`}
+    >
       <ProductDetail product={product} />
     </Container>
   );
@@ -15,7 +17,6 @@ const SingleProduct = ({ product }: { product: ProductFlat }) => {
 
 export async function getStaticPaths() {
   const products = await getProducts();
-
   const paths = products.map((product) => ({
     params: {
       slug: product.slug,
@@ -23,7 +24,7 @@ export async function getStaticPaths() {
   }));
   return {
     paths: paths,
-    fallback: true,
+    fallback: false,
   };
 }
 

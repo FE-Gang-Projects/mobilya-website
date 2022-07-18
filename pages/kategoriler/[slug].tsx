@@ -19,13 +19,14 @@ export async function getStaticPaths() {
   }));
   return {
     paths: paths,
-    fallback: true,
+    fallback: false,
   };
 }
 
 export async function getStaticProps({ params }: { params: { slug: string } }) {
   const { categories } = await getProductsAndCategories();
   const category = categories.filter((cat) => cat.slug === params.slug)[0];
+  console.log(category.name);
   const subCategories = categories.filter((cat) => category.altKategoriler.includes(cat.id)) || [];
   return {
     props: {
@@ -45,7 +46,6 @@ const checkHaveProducts = (subCategories: CategoryFlat[]) => {
 
 export default function CategoryPage({ category, subCategories, categories }: CategoryPageProps) {
   const router = useRouter();
-
   return (
     <Container
       title={`${category.name}`}
